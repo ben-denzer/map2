@@ -1,0 +1,57 @@
+$color1: #4b98c6;
+$color2: #254476;
+$mainBgColor: white;
+$textColor: #222;
+
+$topbarBg: $color1;
+$topbarHeight: 40px;
+$filterbarBg: $color2;
+$filterbarHeight: 50px;
+$mapHeight: 600px;
+$headerFontSize: 24px;
+
+$rangeSliderIconBg: $color2;
+$rangeSliderTextColor: $mainBgColor;
+
+@import "home";
+@import "searchResults";
+@import "sidebarFilter";
+@import "_3rdPartynouislider";
+@import "mobile";
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin: 0;
+
+    div {
+        box-sizing: border-box;
+    }
+
+    .box {
+        height: 10px;
+        width: 10px;
+        display: inline-block;
+        margin: 0 5px;
+
+        &.light {
+            background-color: $mainBgColor;
+            border: 1px solid #666;
+        }
+
+        &.dark {
+            background-color: #222;
+            border: 1px solid #999;
+        }
+
+        &.no-pets {
+            visibility: hidden;
+        }
+
+        &.paw {
+            background-color: #999;
+            border: 1px solid black;
+            margin-right: 4px;
+        }
+    }
+}

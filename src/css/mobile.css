@@ -1,0 +1,33 @@
+#root {
+  width: 100%;
+  max-width: 100%; }
+  #root #mobile_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%; }
+    #root #mobile_container #mobile_header {
+      display: flex;
+      width: 100%;
+      justify-content: space-between; }
+      #root #mobile_container #mobile_header #mobile_menu {
+        height: 40px;
+        width: 25px;
+        margin-left: 10px; }
+        #root #mobile_container #mobile_header #mobile_menu .hamburger-bar {
+          width: 90%;
+          height: 2px;
+          margin-top: 5px;
+          background-color: #000; }
+      #root #mobile_container #mobile_header #mobile_header_title {
+        width: 100%;
+        text-align: center; }
+    #root #mobile_container .first-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%; }
+      #root #mobile_container .first-page #mobile_logo {
+        width: 80%;
+        margin: 5px auto; }

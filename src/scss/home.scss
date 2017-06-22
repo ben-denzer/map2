@@ -1,0 +1,170 @@
+#home_page_container {
+    position: relative;
+    width: 100%;
+
+    #top_bar {
+        width: 100%;
+        height: $topbarHeight;
+        font-size: $headerFontSize;
+        color: $mainBgColor;
+        background-color: $topbarBg;
+    }
+
+    #filterbar {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        background-color: $filterbarBg;
+        height: $filterbarHeight;
+        position: relative;
+        z-index: 2;
+
+        .filterbar-select {
+            margin-top: 10px;
+            width: 200px;
+
+            &.select-disabled {
+                &:hover {
+                    cursor: not-allowed;
+                }
+
+                .filterbar-title {
+                    color: #999;
+                }
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            &.filterbar-with-buttons {
+                .filterbar-title {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .filter-buttons-container {
+                        display: flex;
+                        align-items: center;
+
+                        .filter-button {
+                            box-sizing: border-box;
+                            height: 75%;
+                            padding: 0 10px;
+                            border-right: 1px solid #666;
+
+                            &:hover {
+                                opacity: .8;
+                                cursor: pointer;
+                            }
+
+                            &:last-of-type {
+                                border: 0;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .filterbar-title {
+                width: 100%;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                background-color: $mainBgColor;
+                border: 1px solid $color1;
+                font-size: 18px;
+                color: $color2;
+                padding-left: 10px;
+            }
+
+            .filterbar-options {
+                width: 100%;
+                background: $mainBgColor;
+                border: 1px solid $color1;
+
+                .filterbar-li {
+                    width: 100%;
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    padding-left: 10px;
+                    font-size: 15px;
+
+                    &:hover {
+                        background-color: $color1;
+                        color: $mainBgColor;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        #reset_arrow,
+        #sliders_thumb {
+            width: 30px;
+            height: 60%;
+            align-self: center;
+            right: 25px;
+
+            &:hover {
+                opacity: .8;
+            }
+
+            &.disabled {
+                opacity: .4;
+            }
+        }
+    }
+
+    #map {
+        width: 100%;
+        height: $mapHeight;
+        position: relative;
+        z-index: 1;
+        transition: all .75s ease-in-out;
+
+        &.sidebar-open {
+            width: calc(100% - 320px);
+        }
+
+        .info-window {
+            display: flex;
+            align-items: center;
+
+            .info-left {
+                img {
+                    height: 80px;
+                    width: auto;
+
+                    @media (max-width: 1000px) {
+                        height: 40px;
+                    }
+                }
+            }
+
+            .info-right {
+                display: flex;
+                flex-direction: column;
+                padding-left: 10px;
+                font-size: 12px;
+
+                h3 {
+                    font-size: 16px;
+                    margin-bottom: -2px;
+                }
+                div {
+                    margin-left: 0;
+                    display: flex;
+                    align-items: center;
+
+                    @media (max-width: 1000px) {
+                        display: none;
+                    }
+                }
+                a {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,130 @@
+/* eslint-disable */
+const getCoords = community => ({ lat: community.lat, lng: community.lng });
+
+let map;
+
+function initMap(options, highlightedCommunity, toggleHighlight) {
+    const initialSettings = {
+        filteredData: [],
+        center: {
+            lat: 39,
+            lng: -94,
+        },
+        zoom: 5,
+    };
+
+    let highlightOverride;
+    if (highlightedCommunity) {
+        // settings override if highlighted
+        const community = options.filteredData.filter(a => {
+            if (a.id === highlightedCommunity) return a;
+        })[0];
+        if (community) {
+            const center = { lat: community.lat, lng: community.lng };
+            const zoom = 13;
+            highlightOverride = { center, zoom };
+        }
+    }
+
+    const settings = Object.assign(initialSettings, options, highlightOverride);
+    const { filteredData, center, zoom } = settings;
+
+
+    map = new window.google.maps.Map(document.getElementById("map"), {
+        zoom,
+        center,
+        scrollwheel: false,
+    });
+
+    // don't show infowindow for other places
+    map.addListener("click", (ev) => {
+        if (ev.placeId) {
+            ev.stop();
+        }
+    });
+
+    const markers = filteredData.map(location => (
+        new window.google.maps.Marker({
+            position: getCoords(location),
+            icon: "/img/map-pin.png",
+            allData: location,
+        })
+    ));
+
+    const allInfoWindows = [];
+
+    markers.forEach((a) => {
+        const { city, data, id, state, beds } = a.allData;
+        const {
+            address,
+            community_name: communityName,
+            community_url: website,
+            image,
+        } = data;
+
+        let infoWindowBeds = "";
+        if (beds.length === 1) {
+            if (beds[0].toString() === "1") {
+                infoWindowBeds = "1 Bedroom";
+            } else {
+                infoWindowBeds = `${beds[0]} Bedrooms`;
+            }
+        } else {
+            const lowest = Math.min(...beds);
+            const highest = Math.max(...beds);
+            infoWindowBeds = `${lowest}-${highest} Bedrooms`;
+        }
+
+        const infoWindowContent = `
+            <div class="info-window">
+                <div class="info-left">
+                    <img src=${image} alt=${communityName} />
+                </div>
+                <div class="info-right">
+                    <h3>${communityName}</h3>
+                    <div>
+                        <div class="box dark"></div>
+                        ${address} - ${city}, ${state}
+                    </div>
+                    <div>
+                        <div class="box dark"></div>
+                        ${infoWindowBeds}
+                    </div>
+                    <a href="${website}" target="_blank">${website}</a>
+                </div>
+            </div>
+        `;
+
+        const infoWindow = new window.google.maps.InfoWindow({ content: infoWindowContent });
+
+        allInfoWindows.push(infoWindow);
+
+        a.addListener("click", () => {
+            allInfoWindows.forEach(b => b.close());
+            toggleHighlight(id);
+            infoWindow.open(map, a);
+        });
+
+        if (id === highlightedCommunity) {
+            infoWindow.open(map, a);
+        }
+    });
+
+    // Add a marker clusterer to manage the markers.
+    new window.MarkerClusterer( // eslint-disable-line
+        map,
+        markers,
+        {
+            styles: [{
+                url: "/img/m1.png",
+                height: 60,
+                width: 60,
+                textColor: "white",
+                textSize: 12,
+                backgroundPosition: "center",
+            }],
+        },
+    );
+}
+
+export { initMap, map };
