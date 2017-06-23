@@ -5,7 +5,20 @@ import changeMap from "../../../utils/changeMap";
 
 class MapContainer extends Component {
     componentDidMount() {
-        initMap();
+        if (!this.props.mobile) {
+            initMap();
+        } else {
+            console.log('did mount');
+            const {
+                activeCity,
+                defaultMapLocation,
+                filteredData,
+                highlightedCommunity,
+                toggleHighlight,
+            } = this.props;
+            const options = { filteredData, activeCity, defaultMapLocation };
+            changeMap(options, highlightedCommunity, toggleHighlight);
+        }
     }
 
     componentWillReceiveProps(nextProps) {

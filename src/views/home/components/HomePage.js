@@ -39,7 +39,7 @@ class HomePage extends Component {
     render() {
         if (this.props.mobile) {
             return (
-                <div id="mobile_container">
+                <div id="mobile_container" className={!this.props.history.location.hash && 'first-page'}>
                     <MobileHeader
                         handleMobileMenuClick={this.props.handleMobileMenuClick}
                         changeMobileView={this.changeMobileView}

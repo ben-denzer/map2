@@ -4,10 +4,16 @@ import sortData from "../../../utils/sortData";
 import CommunityPreview from "./CommunityPreview";
 import SearchResultsMenu from "./SearchResultsMenu";
 import MapContainer from "../../home/components/MapContainer";
+import SidebarFilterContainer from "../../sidebarFilter/containers/SidebarFilterContainer";
 
 class SearchResultsPage extends React.Component { // eslint-disable-line
     componentDidUpdate(prevProps) {
-        const { highlightedCommunity } = this.props;
+        const { highlightedCommunity, mobile } = this.props;
+
+        if (mobile) {
+            return;
+        }
+
         if (highlightedCommunity && highlightedCommunity !== prevProps.highlightedCommunity) {
             const highlight = document.getElementsByClassName("highlighted")[0];
             const rect = highlight.getBoundingClientRect();
@@ -61,6 +67,10 @@ class SearchResultsPage extends React.Component { // eslint-disable-line
                     >
                         <MapContainer {...this.props} />
                     </div>
+                );
+            } else if (/filter$/.test(history.location.hash)) {
+                return (
+                    <SidebarFilterContainer {...this.props} />
                 );
             } else {
                 return (

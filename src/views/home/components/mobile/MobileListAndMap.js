@@ -2,6 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SearchResultsContainer from "../../../searchResults/containers/SearchResultsContainer";
+import MobileBottomNav from "./MobileBottomNav";
 
 function MobileListAndMap(props) {
     const currentHash = props.history.location.hash;
@@ -25,6 +26,7 @@ function MobileListAndMap(props) {
 
             </div>
             <SearchResultsContainer {...props} />
+            {currentView !== 'filter' && <MobileBottomNav {...props} />}
         </div>
     );
 }
