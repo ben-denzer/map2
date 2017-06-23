@@ -17,6 +17,7 @@ function Filterbar(props) {
         allData,
         handleCounter,
         handleFilter,
+        history,
         resetFilters,
         selectState,
         stateOptions,
@@ -30,6 +31,7 @@ function Filterbar(props) {
                 activeFilter={activeFilter}
                 activeState={activeState}
                 handleFilter={handleFilter}
+                history={history}
                 selectState={selectState}
                 stateOptions={stateOptions}
                 toggleFilterOptions={toggleFilterOptions}
@@ -86,6 +88,7 @@ Filterbar.propTypes = {
     allData: PropTypes.array.isRequired,
     handleCounter: PropTypes.func.isRequired,
     handleFilter: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
     resetFilters: PropTypes.func.isRequired,
     selectState: PropTypes.func.isRequired,
     stateOptions: PropTypes.array.isRequired,

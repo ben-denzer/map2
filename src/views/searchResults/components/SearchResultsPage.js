@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import sortData from "../../../utils/sortData";
 import CommunityPreview from "./CommunityPreview";
 import SearchResultsMenu from "./SearchResultsMenu";
+import MapContainer from "../../home/components/MapContainer";
 
 class SearchResultsPage extends React.Component { // eslint-disable-line
     componentDidUpdate(prevProps) {
@@ -24,6 +25,7 @@ class SearchResultsPage extends React.Component { // eslint-disable-line
             filteredData,
             handleResultsSort,
             highlightedCommunity,
+            history,
             mobile,
             sortFilterStatus,
             stateOptions,
@@ -41,6 +43,38 @@ class SearchResultsPage extends React.Component { // eslint-disable-line
             />
         ));
 
+        if (mobile) {
+            if (/list$/.test(history.location.hash)) {
+                return (
+                    <div
+                        className={"sidebar-container mobile"}
+                        id="search_results_container"
+                    >
+                        {previewPanels}
+                    </div>
+                );
+            } else if (/map$/.test(history.location.hash)) {
+                return (
+                    <div
+                        className={"sidebar-container mobile"}
+                        id="search_results_container"
+                    >
+                        <MapContainer {...this.props} />
+                    </div>
+                );
+            } else {
+                return (
+                    <div
+                        className={"sidebar-container mobile"}
+                        id="search_results_container"
+                    >
+                        Other
+                    </div>
+                );
+            }
+        }
+
+
         return (
             <div
                 className={`sidebar-container${mobile ? " mobile" : ""}`}
@@ -50,6 +84,7 @@ class SearchResultsPage extends React.Component { // eslint-disable-line
                     activeSort={activeSort}
                     filteredData={filteredData}
                     handleResultsSort={handleResultsSort}
+                    mobile={mobile}
                     sortFilterStatus={sortFilterStatus}
                     stateOptions={stateOptions}
                     toggleSortFilter={toggleSortFilter}
@@ -69,6 +104,7 @@ SearchResultsPage.propTypes = {
     filteredData: PropTypes.array.isRequired,
     handleResultsSort: PropTypes.func.isRequired,
     highlightedCommunity: PropTypes.number,
+    history: PropTypes.object.isRequired,
     mobile: PropTypes.bool.isRequired,
     sortFilterStatus: PropTypes.string.isRequired,
     stateOptions: PropTypes.array.isRequired,

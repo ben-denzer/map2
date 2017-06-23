@@ -17,10 +17,7 @@ class MainMobileContainer extends React.Component {
             toggleFilterOptions,
         } = this.props;
 
-        const view = window.location.hash.split('&view=')[1];
-        console.log('view = ', view);
-
-        if (history.location.pathname === '/' && !history.location.hash) {
+        if (!history.location.hash) {
             return (
                 <MobileChooseState
                     activeFilter={activeFilter}
@@ -36,7 +33,9 @@ class MainMobileContainer extends React.Component {
         }
 
         return (
-            <MobileListAndMap {...this.props} />
+            <div>
+                <MobileListAndMap {...this.props} />
+            </div>
         );
     }
 }

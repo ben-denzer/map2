@@ -33,6 +33,7 @@ function filterData(allData, filters) {
             if (a.baths.indexOf(Number(filters.bathrooms)) !== -1) {
                 return a;
             }
+            return false;
         });
     }
 
@@ -41,6 +42,7 @@ function filterData(allData, filters) {
             if (a.beds.indexOf(Number(filters.bedrooms)) !== -1) {
                 return a;
             }
+            return false;
         });
     }
 

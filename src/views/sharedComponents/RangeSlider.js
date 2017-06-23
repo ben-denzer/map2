@@ -20,7 +20,7 @@ class RangeSlider extends Component {
                 margin: step,
                 tooltips: [true, true],
                 format: {
-                    to: val => parseInt(val.toString()),
+                    to: val => parseInt(val.toString(), 10),
                     from: val => val,
                 },
                 step,

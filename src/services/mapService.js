@@ -46,7 +46,7 @@ function initMap(options, highlightedCommunity, toggleHighlight) {
     const markers = filteredData.map(location => (
         new window.google.maps.Marker({
             position: getCoords(location),
-            icon: "/img/map-pin.png",
+            icon: "/gridmedia/img/map-pin.png",
             allData: location,
         })
     ));
@@ -116,7 +116,7 @@ function initMap(options, highlightedCommunity, toggleHighlight) {
         markers,
         {
             styles: [{
-                url: "/img/m1.png",
+                url: "/gridmedia/img/m1.png",
                 height: 60,
                 width: 60,
                 textColor: "white",

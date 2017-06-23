@@ -7,6 +7,7 @@ function SearchResultsMenu(props) {
         activeSort,
         filteredData,
         handleResultsSort,
+        // mobile,
         sortFilterStatus,
         stateOptions,
         toggleSortFilter,
@@ -21,6 +22,7 @@ function SearchResultsMenu(props) {
         if (a.state === firstCommunity.state) {
             return a;
         }
+        return false;
     })[0].state_display;
 
     return (
@@ -41,6 +43,7 @@ SearchResultsMenu.propTypes = {
     activeSort: PropTypes.string.isRequired,
     filteredData: PropTypes.array.isRequired,
     handleResultsSort: PropTypes.func.isRequired,
+    // mobile: PropTypes.bool.isRequired,
     sortFilterStatus: PropTypes.string.isRequired,
     stateOptions: PropTypes.array.isRequired,
     toggleSortFilter: PropTypes.func.isRequired,

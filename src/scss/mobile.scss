@@ -12,6 +12,10 @@
             align-items: center;
             height: 100%;
 
+            &>div {
+                width: 100%;
+            }
+
             #mobile_header {
                 display: flex;
                 width: 100%;
@@ -90,13 +94,29 @@
             #mobile_list_and_map_container {
                 position: relative;
 
-                #search_results_container {
-                    &.mobile {
-                        position: relative;
-                        margin-top: -50px;
+                .sidebar-container {
+                    &#search_results_container {
+                        width: 100%;
 
-                        #search_results_menu {
-                            display: none;
+                        &.mobile {
+                            position: relative;
+                            margin-top: -50px;
+                            width: 100%;
+
+                            .community-preview-container {
+                                width: 100%;
+                                max-width: 500px;
+                                margin: 0 auto;
+
+                                .preview-image {
+                                    @media (min-width: 501px) {
+                                        height: 250px;
+                                    }
+                                    @media (min-width: 401px) {
+                                        height: 200px;
+                                    }
+                                }
+                            }
                         }
                     }
                 }

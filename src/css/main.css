@@ -555,6 +555,8 @@
       flex-direction: column;
       align-items: center;
       height: 100%; }
+      #root #mobile_page_container #mobile_container > div {
+        width: 100%; }
       #root #mobile_page_container #mobile_container #mobile_header {
         display: flex;
         width: 100%;
@@ -608,11 +610,22 @@
                 color: white; }
       #root #mobile_page_container #mobile_container #mobile_list_and_map_container {
         position: relative; }
-        #root #mobile_page_container #mobile_container #mobile_list_and_map_container #search_results_container.mobile {
-          position: relative;
-          margin-top: -50px; }
-          #root #mobile_page_container #mobile_container #mobile_list_and_map_container #search_results_container.mobile #search_results_menu {
-            display: none; }
+        #root #mobile_page_container #mobile_container #mobile_list_and_map_container .sidebar-container#search_results_container {
+          width: 100%; }
+          #root #mobile_page_container #mobile_container #mobile_list_and_map_container .sidebar-container#search_results_container.mobile {
+            position: relative;
+            margin-top: -50px;
+            width: 100%; }
+            #root #mobile_page_container #mobile_container #mobile_list_and_map_container .sidebar-container#search_results_container.mobile .community-preview-container {
+              width: 100%;
+              max-width: 500px;
+              margin: 0 auto; }
+              @media (min-width: 501px) {
+                #root #mobile_page_container #mobile_container #mobile_list_and_map_container .sidebar-container#search_results_container.mobile .community-preview-container .preview-image {
+                  height: 250px; } }
+              @media (min-width: 401px) {
+                #root #mobile_page_container #mobile_container #mobile_list_and_map_container .sidebar-container#search_results_container.mobile .community-preview-container .preview-image {
+                  height: 200px; } }
 
 body {
   font-family: Arial, Helvetica, sans-serif;

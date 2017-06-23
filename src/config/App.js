@@ -11,7 +11,9 @@ import "../css/main.css";
 const store = configureStore();
 
 // Load all possible states (states as-in New York, Texas, etc.)
-store.dispatch(getStateData());
+document.addEventListener('DOMContentLoaded', () => {
+    store.dispatch(getStateData());
+});
 
 // Check for mobile
 let resizeTimer;

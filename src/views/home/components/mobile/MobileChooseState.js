@@ -17,7 +17,7 @@ function MobileChooseState(props) {
 
     return (
         <div className="first-page">
-            <img id="mobile_logo" src="/img/logo.png" alt="Community Name" />
+            <img id="mobile_logo" src="/gridmedia/img/app-logo.png" alt="Community Name" />
             <StateFilter
                 activeFilter={activeFilter}
                 activeState={activeState}
