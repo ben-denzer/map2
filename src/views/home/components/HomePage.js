@@ -8,6 +8,10 @@ import SearchResultsContainer from "../../searchResults/containers/SearchResults
 import SidebarFilterContainer from "../../sidebarFilter/containers/SidebarFilterContainer";
 
 class HomePage extends Component {
+    constructor(props) {
+        super(props);
+        this.changeMobileView = this.changeMobileView.bind(this);
+    }
     componentDidMount() {
         if (!this.props.activeState) {
             const hash = this.props.history.location.hash;
@@ -24,14 +28,23 @@ class HomePage extends Component {
             }
         });
     }
+
+    changeMobileView(newView) {
+        const oldPathname = this.props.history.location.pathname;
+        const oldHash = this.props.history.location.hash;
+        const newHash = oldHash.slice(0, oldHash.lastIndexOf('=') + 1) + newView;
+        this.props.history.push(oldPathname + newHash);
+    }
+
     render() {
         if (this.props.mobile) {
             return (
                 <div id="mobile_container">
                     <MobileHeader
                         handleMobileMenuClick={this.props.handleMobileMenuClick}
+                        changeMobileView={this.changeMobileView}
                     />
-                    <MainMobileContainer {...this.props} />
+                    <MainMobileContainer {...this.props} changeMobileView={this.changeMobileView} />
                 </div>
             );
         }

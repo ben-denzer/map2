@@ -33,9 +33,7 @@ class MainMobileContainer extends React.Component {
         }
 
         return (
-            <div>
-                <MobileListAndMap {...this.props} />
-            </div>
+            <MobileListAndMap {...this.props} />
         );
     }
 }
