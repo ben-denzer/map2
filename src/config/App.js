@@ -6,14 +6,12 @@ import Routes from "./Routes";
 import configureStore from "./configureStore";
 import { SET_MOBILE } from "../views/actionTypes";
 import "../css/main.css";
-// import "../../node_modules/react-md/dist/react-md.light_blue-cyan.min.css";
+import "../../node_modules/react-md/dist/react-md.light_blue-cyan.min.css";
 
 const store = configureStore();
 
 // Load all possible states (states as-in New York, Texas, etc.)
-document.addEventListener('DOMContentLoaded', () => {
-    store.dispatch(getStateData());
-});
+store.dispatch(getStateData());
 
 // Check for mobile
 let resizeTimer;

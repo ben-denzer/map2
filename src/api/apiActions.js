@@ -14,7 +14,6 @@ const getCommunitiesInState = state => (dispatch) => {
     fetch(`${domainUrl}${apiBaseUrl}${corpId}/?format=json&state=${state}`)
         .then(res => res.json())
         .then((rawCommunities) => {
-            // I think this arrow function looks horrible, but the linter...
             const allCommunityData = rawCommunities.filter(a => (
                 a.is_visible && a
             )).map(parseRentPrices);
