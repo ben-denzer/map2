@@ -31,6 +31,10 @@ class HomePage extends Component {
 
     changeMobileView(newView) {
         const oldPathname = this.props.history.location.pathname;
+        if (!newView) {
+            this.props.history.push(oldPathname);
+            return;
+        }
         const oldHash = this.props.history.location.hash;
         const newHash = oldHash.slice(0, oldHash.lastIndexOf('=') + 1) + newView;
         this.props.history.push(oldPathname + newHash);
@@ -41,7 +45,6 @@ class HomePage extends Component {
             return (
                 <div id="mobile_container" className={!this.props.history.location.hash && 'first-page'}>
                     <MobileHeader
-                        handleMobileMenuClick={this.props.handleMobileMenuClick}
                         changeMobileView={this.changeMobileView}
                     />
                     <MainMobileContainer {...this.props} changeMobileView={this.changeMobileView} />
@@ -69,7 +72,6 @@ class HomePage extends Component {
 HomePage.propTypes = {
     activeState: PropTypes.string.isRequired,
     mobile: PropTypes.bool.isRequired,
-    handleMobileMenuClick: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     selectState: PropTypes.func.isRequired,
     sidebarFilterVisibility: PropTypes.bool.isRequired,

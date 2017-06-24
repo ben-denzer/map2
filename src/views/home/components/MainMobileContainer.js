@@ -10,7 +10,6 @@ class MainMobileContainer extends React.Component {
             activeFilter,
             activeState,
             handleFilter,
-            handleMobileMenuClick,
             history,
             selectState,
             stateOptions,
@@ -23,7 +22,6 @@ class MainMobileContainer extends React.Component {
                     activeFilter={activeFilter}
                     activeState={activeState}
                     handleFilter={handleFilter}
-                    handleMobileMenuClick={handleMobileMenuClick}
                     history={history}
                     selectState={selectState}
                     stateOptions={stateOptions}
@@ -42,7 +40,6 @@ MainMobileContainer.propTypes = {
     activeFilter: PropTypes.string.isRequired,
     activeState: PropTypes.string.isRequired,
     handleFilter: PropTypes.func.isRequired,
-    handleMobileMenuClick: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     selectState: PropTypes.func.isRequired,
     stateOptions: PropTypes.array.isRequired,

@@ -5,7 +5,6 @@ import filterData from "../../../utils/filterData";
 import {
     handleCounter,
     handleFilter,
-    handleMobileMenuClick,
     resetFilters,
     selectState,
     toggleSidebarFilter,
@@ -83,7 +82,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
     handleCounter: e => dispatch(handleCounter(e)),
     handleFilter: e => dispatch(handleFilter(e)),
-    handleMobileMenuClick: () => dispatch(handleMobileMenuClick()),
     resetFilters: () => dispatch(resetFilters()),
     selectState: e => dispatch(selectState(e)),
     toggleSidebarFilter: () => dispatch(toggleSidebarFilter()),

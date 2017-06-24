@@ -203,6 +203,9 @@ $sidebarTransition: .75s;
 
         #filter_pets_container {
             display: flex;
+            width: 80%;
+            max-width: 500px;
+            margin: 35px auto;
         }
 
         .multi-filter {
@@ -270,6 +273,7 @@ $sidebarTransition: .75s;
             margin: 15px auto;
 
             .slider-label {
+                color: transparentize($color2, .2);
                 margin-bottom: 20px;
             }
 

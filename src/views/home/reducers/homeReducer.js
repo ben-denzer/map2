@@ -68,10 +68,6 @@ export default function homeReducer(state = initialState, action) {
             },
         );
 
-    case "MOBILE_MENU_CLICKED":
-        console.log('mobile menu clicked'); // eslint-disable-line
-        return state;
-
     case "RESET_FILTERS":
         return Object.assign(
             {},
