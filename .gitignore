@@ -22,3 +22,5 @@ yarn-error.log*
 
 mainSite.indexbkup.html
 mainSite.index.html
+
+src/css/*
