@@ -17,10 +17,8 @@ function MobileHeader(props) {
     );
 }
 
-
-
 MobileHeader.propTypes = {
-    handleMobileMenuClick: PropTypes.func.isRequired,
+    changeMobileView: PropTypes.func.isRequired,
 };
 
 export default MobileHeader;

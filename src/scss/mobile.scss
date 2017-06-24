@@ -51,12 +51,13 @@
                 display: flex;
                 width: 100%;
                 justify-content: space-between;
+                align-items: center;
+                padding-top: 5px;
 
                 #mobile_menu {
                     height: 40px;
                     width: 25px;
                     margin-left: 10px;
-                    margin-top: 1em;
 
                     .hamburger-bar {
                         width: 90%;
