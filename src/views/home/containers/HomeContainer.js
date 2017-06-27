@@ -7,6 +7,7 @@ import {
     handleFilter,
     resetFilters,
     selectState,
+    setCity,
     toggleSidebarFilter,
     toggleFilterOptions,
 } from "../actions/filterActions";
@@ -84,6 +85,7 @@ const mapDispatchToProps = dispatch => ({
     handleFilter: e => dispatch(handleFilter(e)),
     resetFilters: () => dispatch(resetFilters()),
     selectState: e => dispatch(selectState(e)),
+    setCity: city => dispatch(setCity(city)),
     toggleSidebarFilter: () => dispatch(toggleSidebarFilter()),
     toggleFilterOptions: filter => dispatch(toggleFilterOptions(filter)),
     toggleHighlight: id => dispatch(toggleHighlight(id)),

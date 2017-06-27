@@ -9,6 +9,7 @@ import SidebarFilterContainer from "../../sidebarFilter/containers/SidebarFilter
 
 class HomePage extends Component {
     constructor(props) {
+        console.log(props.filteredData);
         super(props);
         this.changeMobileView = this.changeMobileView.bind(this);
     }
@@ -17,8 +18,16 @@ class HomePage extends Component {
             const hash = this.props.history.location.hash;
             if (hash) {
                 const stateIndex = hash.search(/state=\w\w/);
-                const stateToFind = hash.slice(stateIndex + 6, stateIndex + 8);
-                this.props.selectState({ stateToFind });
+                const cityIndex = hash.search(/city=/);
+                if (stateIndex === 0 || stateIndex) {
+                    const stateToFind = hash.slice(stateIndex + 6, stateIndex + 8);
+                    this.props.selectState({ stateToFind });
+                }
+                if (cityIndex) {
+                    const cityToTheEnd = hash.slice(cityIndex + 5);
+                    const cityToFind = cityToTheEnd.slice(0, cityToTheEnd.indexOf('&'));
+                    setTimeout(() => { this.props.setCity(cityToFind) }, 3000);
+                }
             }
         }
         // Close the filter options if they click anywhere else on the page
@@ -41,6 +50,7 @@ class HomePage extends Component {
     }
 
     render() {
+        console.log(this.props);
         if (this.props.mobile) {
             return (
                 <div id="mobile_container" className={!this.props.history.location.hash && 'first-page'}>

@@ -8,6 +8,7 @@ $sidebarTransition: .75s;
     top: 0;
     display: flex;
     overflow-x: hidden;
+    background-color: transparentize($color1, .1);
 
     &.open {
         #search_results_container {
@@ -25,8 +26,8 @@ $sidebarTransition: .75s;
     z-index: 2;
     max-height: $mapHeight;
     overflow: auto;
-    background-color: transparentize($color1, .1);
     border: 1px solid #666;
+    border-bottom: 0;
     width: 320px;
     transition: all $sidebarTransition ease-in-out;
 

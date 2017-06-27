@@ -78,6 +78,15 @@ export default function homeReducer(state = initialState, action) {
             },
         );
 
+    case "SET_CITY":
+        return Object.assign(
+            {},
+            state,
+            {
+                active: Object.assign({}, state.active, { activeCity: action.city }),
+            },
+        );
+
     case "STATES_SUCCESS":
         return Object.assign(
             {},

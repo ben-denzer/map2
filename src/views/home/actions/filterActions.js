@@ -6,6 +6,7 @@ import {
     RESET_FILTERS,
     RESET_SIDEBAR_FILTERS,
     SELECT_FILTER_ITEM,
+    SET_CITY,
     TOGGLE_FILTER,
     TOGGLE_SIDEBAR_FILTER_VISIBILITY,
 } from "../../actionTypes";
@@ -35,6 +36,8 @@ const selectState = e => (dispatch) => {
     dispatch({ type: HIGHLIGHT_COMMUNITY });
 };
 
+const setCity = city => ({ type: SET_CITY, city });
+
 const toggleFilterOptions = filter => (dispatch, getState) => {
     if (!filter || filter === getState().home.activeFilter) {
         dispatch({ type: TOGGLE_FILTER, filter: "" });
@@ -50,6 +53,7 @@ export {
     handleFilter,
     resetFilters,
     selectState,
+    setCity,
     toggleFilterOptions,
     toggleSidebarFilter,
 };
