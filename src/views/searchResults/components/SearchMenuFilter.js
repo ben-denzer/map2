@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import sortButton from "../../../img/menulines.png";
 
 function SearchMenuFilter(props) {
     const {
@@ -15,7 +16,7 @@ function SearchMenuFilter(props) {
                     id="results_menu_button"
                     onClick={toggleSortFilter}
                 >
-                    X
+                    <img id="sortButton" src={sortButton} alt="sort" />
                 </div>
             </div>
             <div

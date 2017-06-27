@@ -9,7 +9,6 @@ import SidebarFilterContainer from "../../sidebarFilter/containers/SidebarFilter
 
 class HomePage extends Component {
     constructor(props) {
-        console.log(props.filteredData);
         super(props);
         this.changeMobileView = this.changeMobileView.bind(this);
     }
@@ -50,7 +49,6 @@ class HomePage extends Component {
     }
 
     render() {
-        console.log(this.props);
         if (this.props.mobile) {
             return (
                 <div id="mobile_container" className={!this.props.history.location.hash && 'first-page'}>

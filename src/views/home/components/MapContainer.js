@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { initMap } from "../../../services/mapService";
+// import { initMap } from "../../../services/mapService";
 import changeMap from "../../../utils/changeMap";
 
 class MapContainer extends Component {
