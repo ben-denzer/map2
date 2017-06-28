@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { getStateData } from "../api/apiActions";
@@ -27,14 +28,22 @@ const checkForMobile = () => {
 checkForMobile();
 window.addEventListener("resize", checkForMobile);
 
-function App() {
+function App(props) {
     return (
         <Provider store={store}>
             <BrowserRouter>
-                <Routes store={store} />
+                <Routes store={store} onlySearch={props.onlySearch} />
             </BrowserRouter>
         </Provider>
     );
 }
+
+App.defaultProps = {
+    onlySearch: false,
+};
+
+App.propTypes = {
+    onlySearch: PropTypes.bool,
+};
 
 export default App;
