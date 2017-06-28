@@ -1,24 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { findAllCities } from "../../../../utils/setFilters";
 
 function BedroomsDropdown(props) {
     const {
-        activeBedrooms,
         activeFilter,
-        activeState,
-        allData,
+        activeBedrooms,
         handleFilter,
+        // history,
         toggleFilterOptions,
     } = props;
 
-    const filterTitle = activeBedrooms ? `${activeBedrooms} Bedrooms` : "Bedrooms";
-
-    const options = findAllCities(allData).map(a => (
+    const options = [1, 2, 3].map(a => (
         <div
             key={a}
             className="filterbar-li"
-            data-filter={"bedroomsDropdown"}
+            data-filter={"activeBedrooms"}
             data-item={a}
             onClick={handleFilter}
         >
@@ -26,17 +22,10 @@ function BedroomsDropdown(props) {
         </div>
     ));
 
-    // Early return if no state is selected
-    if (!activeState) {
-        return (
-            <div id="bedrooms_dropdown" className="filterbar-select select-disabled">
-                <div className="filterbar-title">Choose a State First</div>
-            </div>
-        );
-    }
+    const filterTitle = activeBedrooms ? activeBedrooms : "Bedrooms";
 
     return (
-        <div id="bedrooms_dropdown" className="filterbar-select">
+        <div id="state_filter" className="filterbar-select">
             <div
                 className="filterbar-title"
                 onClick={() => toggleFilterOptions("bedroomsDropdown")}
@@ -51,11 +40,10 @@ function BedroomsDropdown(props) {
 }
 
 BedroomsDropdown.propTypes = {
-    allData: PropTypes.array.isRequired,
-    activeBedrooms: PropTypes.string.isRequired,
     activeFilter: PropTypes.string.isRequired,
-    activeState: PropTypes.string.isRequired,
+    activeBedrooms: PropTypes.string.isRequired,
     handleFilter: PropTypes.func.isRequired,
+    // history: PropTypes.object.isRequired,
     toggleFilterOptions: PropTypes.func.isRequired,
 };
 
