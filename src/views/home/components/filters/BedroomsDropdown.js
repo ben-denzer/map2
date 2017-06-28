@@ -39,8 +39,12 @@ function BedroomsDropdown(props) {
     );
 }
 
+BedroomsDropdown.defaultProps = {
+    activeFilter: "",
+};
+
 BedroomsDropdown.propTypes = {
-    activeFilter: PropTypes.string.isRequired,
+    activeFilter: PropTypes.string,
     activeBedrooms: PropTypes.string.isRequired,
     handleFilter: PropTypes.func.isRequired,
     // history: PropTypes.object.isRequired,

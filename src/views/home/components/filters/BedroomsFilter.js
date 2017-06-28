@@ -1,62 +1,50 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { findAllCities } from "../../../../utils/setFilters";
 
-function BedroomsDropdown(props) {
-    const {
-        activeBedrooms,
-        activeFilter,
-        activeState,
-        allData,
-        handleFilter,
-        toggleFilterOptions,
-    } = props;
+function BedroomsFilter(props) {
+    const { activeBedrooms, activeState, handleCounter } = props;
 
-    const filterTitle = activeBedrooms ? `${activeBedrooms} Bedrooms` : "Bedrooms";
-
-    const options = findAllCities(allData).map(a => (
-        <div
-            key={a}
-            className="filterbar-li"
-            data-filter={"bedroomsDropdown"}
-            data-item={a}
-            onClick={handleFilter}
-        >
-            {a}
-        </div>
-    ));
-
-    // Early return if no state is selected
     if (!activeState) {
         return (
-            <div id="bedrooms_dropdown" className="filterbar-select select-disabled">
-                <div className="filterbar-title">Choose a State First</div>
+            <div id="bedrooms_filter" className="filterbar-select select-disabled">
+                <div className="filterbar-title">Bedrooms</div>
             </div>
         );
     }
 
     return (
-        <div id="bedrooms_dropdown" className="filterbar-select">
-            <div
-                className="filterbar-title"
-                onClick={() => toggleFilterOptions("bedroomsDropdown")}
-            >
-                {filterTitle}
-            </div>
-            <div className="filterbar-options" hidden={activeFilter !== "bedroomsDropdown"}>
-                {options}
+        <div id="bedrooms_filter" className="filterbar-select filterbar-with-buttons">
+            <div className="filterbar-title">
+                {`${activeBedrooms} ${activeBedrooms === 1 ? "Bedroom" : "Bedrooms"}`}
+                <div className="filter-buttons-container">
+                    <div
+                        className="filter-button"
+                        id="bedrooms_plus_button"
+                        data-action="increment"
+                        data-filter="activeBedrooms"
+                        onClick={handleCounter}
+                    >
+                        +
+                    </div>
+                    <div
+                        className="filter-button"
+                        id="bedrooms_minus_button"
+                        data-action="decrement"
+                        data-filter="activeBedrooms"
+                        onClick={handleCounter}
+                    >
+                        -
+                    </div>
+                </div>
             </div>
         </div>
     );
 }
 
-BedroomsDropdown.propTypes = {
-    allData: PropTypes.array.isRequired,
+BedroomsFilter.propTypes = {
     activeBedrooms: PropTypes.string.isRequired,
-    activeFilter: PropTypes.string.isRequired,
     activeState: PropTypes.string.isRequired,
-    handleFilter: PropTypes.func.isRequired,
-    toggleFilterOptions: PropTypes.func.isRequired,
+    handleCounter: PropTypes.func.isRequired,
 };
 
-export default BedroomsDropdown;
+export default BedroomsFilter;

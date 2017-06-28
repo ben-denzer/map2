@@ -14,6 +14,7 @@ function HPSearchbar(props) {
         stateOptions,
         toggleFilterOptions,
     } = props;
+    console.log('act filter', activeFilter); // eslint-disable-line
     return (
         <div id="hp_search">
             <StateFilter
@@ -28,6 +29,7 @@ function HPSearchbar(props) {
             <BedroomsDropdown
                 activeFilter={activeFilter}
                 activeBedrooms={activeBedrooms}
+                handleFilter={handleFilter}
                 history={history}
                 toggleFilterOptions={toggleFilterOptions}
             />
