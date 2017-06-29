@@ -13,21 +13,23 @@ function StateFilter(props) {
 
     const options = stateOptions.map(a => (
         <div
-            key={a.state}
+            key={a}
             className="filterbar-li"
             data-state={a.state}
-            onClick={(e) => {
-                selectState(e);
-                history.push(`/#state=${a.state}&view=list`);
+            onClick={() => {
+                selectState(a);
+                history.push(`/#state=${encodeURI(a)}&view=list`);
             }}
         >
-            {a.state_display}
+            {a}
         </div>
     ));
 
+    console.log('activeState', activeState); // eslint-disable-line
+
     const filterTitle = activeState && stateOptions.length ?
-        stateOptions.filter(a => a.state === activeState)[0].state_display :
-        "Choose A State";
+        stateOptions.filter(a => a === activeState)[0] :
+        "Choose A Region";
 
     return (
         <div id="state_filter" className="filterbar-select">

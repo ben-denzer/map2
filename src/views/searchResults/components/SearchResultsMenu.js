@@ -19,11 +19,11 @@ function SearchResultsMenu(props) {
 
     const firstCommunity = filteredData[0];
     const stateDisplay = stateOptions.filter((a) => {
-        if (a.state === firstCommunity.state) {
+        if (a === firstCommunity.state) {
             return a;
         }
         return false;
-    })[0].state_display;
+    })[0];
 
     return (
         <div id="search_results_menu">

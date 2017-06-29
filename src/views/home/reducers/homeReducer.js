@@ -21,6 +21,7 @@ const initialState = {
 export default function homeReducer(state = initialState, action) {
     const oldNumber = Number(state.active[action.filter]);
     let newNumber;
+    console.log(action);
 
     switch (action.type) {
 
@@ -105,6 +106,7 @@ export default function homeReducer(state = initialState, action) {
         );
 
     case "SELECT_STATE":
+        console.log('hit selectState reducer');
         return Object.assign(
             {},
             state,

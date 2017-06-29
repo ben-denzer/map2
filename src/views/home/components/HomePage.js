@@ -14,19 +14,19 @@ class HomePage extends Component {
     }
     componentDidMount() {
         if (!this.props.activeState) {
-            const hash = this.props.history.location.hash;
-            if (hash) {
-                const stateIndex = hash.search(/state=\w\w/);
-                // const cityIndex = hash.search(/city=/);
-                if (stateIndex === 0 || stateIndex) {
-                    const stateToFind = hash.slice(stateIndex + 6, stateIndex + 8);
-                    this.props.selectState({ stateToFind });
-                }
-                // if (cityIndex) {
-                //     const cityToTheEnd = hash.slice(cityIndex + 5);
-                //     const cityToFind = cityToTheEnd.slice(0, cityToTheEnd.indexOf('&'));
-                // }
-            }
+            // const hash = this.props.history.location.hash;
+            // if (hash) {
+            //     const stateIndex = hash.search(/state=\w\w/);
+            //     // const cityIndex = hash.search(/city=/);
+            //     if (stateIndex === 0 || stateIndex) {
+            //         const stateToFind = hash.slice(stateIndex + 6, stateIndex + 8);
+            //         this.props.selectState({ stateToFind });
+            //     }
+            //     // if (cityIndex) {
+            //     //     const cityToTheEnd = hash.slice(cityIndex + 5);
+            //     //     const cityToFind = cityToTheEnd.slice(0, cityToTheEnd.indexOf('&'));
+            //     // }
+            // }
         }
         // Close the filter options if they click anywhere else on the page
         document.addEventListener("click", (e) => {

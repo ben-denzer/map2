@@ -42,7 +42,7 @@ class SearchResultsPage extends React.Component { // eslint-disable-line
 
         const previewPanels = sortedData.map(a => (
             <CommunityPreview
-                key={a.id}
+                key={a.key}
                 allCommunityData={a}
                 highlightedCommunity={highlightedCommunity}
                 toggleHighlight={toggleHighlight}

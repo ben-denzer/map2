@@ -29,9 +29,8 @@ const resetFilters = () => (dispatch) => {
     dispatch({ type: HIGHLIGHT_COMMUNITY });
 };
 
-const selectState = e => (dispatch) => {
-    const stateToFind = e.stateToFind || e.target.dataset.state;
-    dispatch(getCommunitiesInState(stateToFind));
+const selectState = region => (dispatch) => {
+    dispatch(getCommunitiesInState(region));
     dispatch({ type: CLEAR_FILTERS });
     dispatch({ type: HIGHLIGHT_COMMUNITY });
 };

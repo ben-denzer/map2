@@ -1,83 +1,85 @@
 function filterData(allData, filters) {
-    let tempData = allData.map(a => (
-        Object.assign(
+    let tempData = allData.map(a => {
+        return Object.assign(
             {},
             a,
             {
-                baths: JSON.parse(a.baths).map(b => parseFloat(b)),
-                beds: JSON.parse(a.beds),
-                features: JSON.parse(a.features),
+                baths: [1,2],
+                beds: Object.keys(a.bed_bath_combos),
+                features: a.features,
             },
         )
-    ));
+    });
 
-    if (filters.amenities) {
-        tempData = tempData.filter((a) => {
-            const allCommunityAmenities = a.features;
+    console.log('tempData --- ', tempData); // eslint-disable-line
 
-            for (let i = 0; i < filters.amenities.length; i += 1) {
-                if (allCommunityAmenities.indexOf(filters.amenities[i]) === -1) {
-                    return false;
-                }
-            }
-            return true;
-        });
-    }
+    // if (filters.amenities) {
+    //     tempData = tempData.filter((a) => {
+    //         const allCommunityAmenities = a.features;
 
-    if (filters.city) {
-        tempData = tempData.filter(a => a.city === filters.city);
-    }
+    //         for (let i = 0; i < filters.amenities.length; i += 1) {
+    //             if (allCommunityAmenities.indexOf(filters.amenities[i]) === -1) {
+    //                 return false;
+    //             }
+    //         }
+    //         return true;
+    //     });
+    // }
 
-    if (filters.bathrooms) {
-        tempData = tempData.filter((a) => {
-            if (a.baths.indexOf(Number(filters.bathrooms)) !== -1) {
-                return a;
-            }
-            return false;
-        });
-    }
+    // if (filters.city) {
+    //     tempData = tempData.filter(a => a.city === filters.city);
+    // }
 
-    if (filters.bedrooms) {
-        tempData = tempData.filter((a) => {
-            if (a.beds.indexOf(Number(filters.bedrooms)) !== -1) {
-                return a;
-            }
-            return false;
-        });
-    }
+    // if (filters.bathrooms) {
+    //     tempData = tempData.filter((a) => {
+    //         if (a.baths.indexOf(Number(filters.bathrooms)) !== -1) {
+    //             return a;
+    //         }
+    //         return false;
+    //     });
+    // }
 
-    if (filters.cats) {
-        tempData = tempData.filter(a => a.cats && a);
-    }
+    // if (filters.bedrooms) {
+    //     tempData = tempData.filter((a) => {
+    //         if (a.beds.indexOf(Number(filters.bedrooms)) !== -1) {
+    //             return a;
+    //         }
+    //         return false;
+    //     });
+    // }
 
-    if (filters.features && filters.features.length) {
-        tempData = tempData.filter((a) => {
-            const allFpFeatures = JSON.parse(a.data.fp_features);
-            for (let i = 0; i < filters.features.length; i += 1) {
-                if (allFpFeatures.indexOf(filters.features[i]) === -1) {
-                    return false;
-                }
-            }
-            return true;
-        });
-    }
+    // if (filters.cats) {
+    //     tempData = tempData.filter(a => a.cats && a);
+    // }
 
-    // PriceFilter default is [0, 0]
-    if (filters.priceFilter[0] && filters.priceFilter[1]) {
-        tempData = tempData.filter((a) => {
-            const { max, min } = a.data.parsedPrices;
-            const userMax = filters.priceFilter[1];
-            const userMin = filters.priceFilter[0];
+    // if (filters.features && filters.features.length) {
+    //     tempData = tempData.filter((a) => {
+    //         const allFpFeatures = JSON.parse(a.data.fp_features);
+    //         for (let i = 0; i < filters.features.length; i += 1) {
+    //             if (allFpFeatures.indexOf(filters.features[i]) === -1) {
+    //                 return false;
+    //             }
+    //         }
+    //         return true;
+    //     });
+    // }
 
-            if (userMax < min) {
-                return false;
-            } else if (userMin > max) {
-                return false;
-            }
+    // // PriceFilter default is [0, 0]
+    // if (filters.priceFilter[0] && filters.priceFilter[1]) {
+    //     tempData = tempData.filter((a) => {
+    //         const { max, min } = a.data.parsedPrices;
+    //         const userMax = filters.priceFilter[1];
+    //         const userMin = filters.priceFilter[0];
 
-            return a;
-        });
-    }
+    //         if (userMax < min) {
+    //             return false;
+    //         } else if (userMin > max) {
+    //             return false;
+    //         }
+
+    //         return a;
+    //     });
+    // }
 
     return tempData;
 }

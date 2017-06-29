@@ -17,7 +17,7 @@ function initMap(options, highlightedCommunity, toggleHighlight) {
     if (highlightedCommunity) {
         // settings override if highlighted
         const community = options.filteredData.filter(a => {
-            if (a.id === highlightedCommunity) return a;
+            if (a.key === highlightedCommunity) return a;
         })[0];
         if (community) {
             const center = { lat: community.lat, lng: community.lng };
@@ -54,13 +54,16 @@ function initMap(options, highlightedCommunity, toggleHighlight) {
     const allInfoWindows = [];
 
     markers.forEach((a) => {
-        const { city, data, id, state, beds } = a.allData;
         const {
             address,
             community_name: communityName,
-            community_url: website,
+            beds,
+            city,
             image,
-        } = data;
+            key,
+            state,
+            website,
+        } = a.allData;
 
         let infoWindowBeds = "";
         if (beds.length === 1) {
@@ -101,11 +104,11 @@ function initMap(options, highlightedCommunity, toggleHighlight) {
 
         a.addListener("click", () => {
             allInfoWindows.forEach(b => b.close());
-            toggleHighlight(id);
+            toggleHighlight(key);
             infoWindow.open(map, a);
         });
 
-        if (id === highlightedCommunity) {
+        if (key === highlightedCommunity) {
             infoWindow.open(map, a);
         }
     });

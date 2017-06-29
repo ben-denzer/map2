@@ -84,7 +84,7 @@ const mapDispatchToProps = dispatch => ({
     handleCounter: e => dispatch(handleCounter(e)),
     handleFilter: e => dispatch(handleFilter(e)),
     resetFilters: () => dispatch(resetFilters()),
-    selectState: e => dispatch(selectState(e)),
+    selectState: region => dispatch(selectState(region)),
     setCity: city => dispatch(setCity(city)),
     toggleSidebarFilter: () => dispatch(toggleSidebarFilter()),
     toggleFilterOptions: filter => dispatch(toggleFilterOptions(filter)),
