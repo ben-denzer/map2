@@ -20,7 +20,7 @@ function SidebarFilter(props) {
     } = props;
 
     const allAmenities = new Set(
-        allData.map(a => [...JSON.parse(a.features)]).filter((b) => {
+        allData.map(a => [...a.community_features]).filter((b) => {
             // dishwasher also shows up in fp_features so it is really confusing
             // to have it here too - plus it makes it give bad results
             if (!/dishwasher/i.test(b)) {
@@ -47,7 +47,7 @@ function SidebarFilter(props) {
     ));
 
     const allFeatures = new Set(
-        allData.map(a => [...JSON.parse(a.data.fp_features)]).reduce((b, c) => [...b, ...c], []),
+        allData.map(a => [...a.floorplan_features]).reduce((b, c) => [...b, ...c], []),
     );
 
     const features = [...allFeatures].map(a => (
