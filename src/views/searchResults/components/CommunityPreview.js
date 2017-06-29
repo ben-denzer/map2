@@ -11,23 +11,21 @@ function CommunityPreview(props) {
     } = props;
 
     const {
+        address,
         beds,
         baths,
         cats,
         city,
+        community_name: communityName,
+        community_url: website,
         data,
         dogs,
-        id,
+        image,
+        key: id,
+        phone,
         state,
     } = allCommunityData;
 
-    const {
-        address,
-        community_name: communityName,
-        community_url: website,
-        image,
-        phone,
-    } = data;
     const { petText, petClass } = displayPets(cats, dogs);
 
     return (

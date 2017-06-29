@@ -40,14 +40,17 @@ class SearchResultsPage extends React.Component { // eslint-disable-line
         } = this.props;
         const sortedData = sortData(filteredData, activeSort);
 
-        const previewPanels = sortedData.map(a => (
-            <CommunityPreview
-                key={a.key}
-                allCommunityData={a}
-                highlightedCommunity={highlightedCommunity}
-                toggleHighlight={toggleHighlight}
-            />
-        ));
+        const previewPanels = sortedData.map(a => {
+            console.log('comm a', a);
+            return (
+                <CommunityPreview
+                    key={a.key}
+                    allCommunityData={a}
+                    highlightedCommunity={highlightedCommunity}
+                    toggleHighlight={toggleHighlight}
+                />
+            );
+        });
 
         if (mobile) {
             if (/list$/.test(history.location.hash)) {

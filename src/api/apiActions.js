@@ -19,7 +19,7 @@ const getCommunitiesInState = region => (dispatch) => {
             ));
             dispatch({ type: COMMUNITIES_SUCCESS, allCommunityData });
             dispatch({ type: SELECT_STATE, activeState: region });
-        }).catch(error => dispatch({ type: API_ERROR, error }));
+        }); // .catch(error => dispatch({ type: API_ERROR, error }));
 };
 
 const getStateData = () => (dispatch) => {
@@ -29,7 +29,7 @@ const getStateData = () => (dispatch) => {
         .then(data => data.json())
         .then((stateData) => {
             dispatch({ type: STATES_SUCCESS, stateData });
-        }).catch(error => dispatch({ type: API_ERROR, error }));
+        }); // .catch(error => dispatch({ type: API_ERROR, error }));
 };
 
 const getRegions = () => (dispatch) => {
@@ -39,7 +39,7 @@ const getRegions = () => (dispatch) => {
         .then(data => data.json())
         .then((stateData) => {
             dispatch({ type: STATES_SUCCESS, stateData });
-        }).catch(error => dispatch({ type: API_ERROR, error }));
+        }); // .catch(error => dispatch({ type: API_ERROR, error }));
 };
 
 export { getCommunitiesInState, getRegions };
