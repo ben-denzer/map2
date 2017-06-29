@@ -25,8 +25,6 @@ function StateFilter(props) {
         </div>
     ));
 
-    console.log('activeState', activeState); // eslint-disable-line
-
     const filterTitle = activeState && stateOptions.length ?
         stateOptions.filter(a => a === activeState)[0] :
         "Choose A Region";

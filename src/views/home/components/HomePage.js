@@ -48,6 +48,7 @@ class HomePage extends Component {
     }
 
     render() {
+        console.log(this.props.filteredData); // eslint-disable-line
         if (this.props.mobile) {
             return (
                 <div id="mobile_container" className={!this.props.history.location.hash && 'first-page'}>
@@ -61,7 +62,13 @@ class HomePage extends Component {
 
         return (
             <div id="home_page_container">
-                <div id="top_bar">Our Communities - Where Would You Like To Live</div>
+                <div id="top_bar">
+                    Our Communities
+                    <div id="house_icon_container">
+                        <img src="/gridmedia/img/house.png" alt="" />
+                    </div>
+                    Where Would You Like To Live
+                </div>
                 <Filterbar {...this.props} />
                 <MapContainer {...this.props} />
                 <div

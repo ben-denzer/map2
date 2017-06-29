@@ -28,6 +28,7 @@ class SearchResultsPage extends React.Component { // eslint-disable-line
     render() {
         const {
             activeSort,
+            activeState,
             filteredData,
             handleResultsSort,
             highlightedCommunity,
@@ -41,7 +42,6 @@ class SearchResultsPage extends React.Component { // eslint-disable-line
         const sortedData = sortData(filteredData, activeSort);
 
         const previewPanels = sortedData.map(a => {
-            console.log('comm a', a);
             return (
                 <CommunityPreview
                     key={a.key}
@@ -95,6 +95,7 @@ class SearchResultsPage extends React.Component { // eslint-disable-line
             >
                 <SearchResultsMenu
                     activeSort={activeSort}
+                    activeState={activeState}
                     filteredData={filteredData}
                     handleResultsSort={handleResultsSort}
                     mobile={mobile}
@@ -109,14 +110,15 @@ class SearchResultsPage extends React.Component { // eslint-disable-line
 }
 
 SearchResultsPage.defaultProps = {
-    highlightedCommunity: null,
+    highlightedCommunity: "",
 };
 
 SearchResultsPage.propTypes = {
     activeSort: PropTypes.string.isRequired,
+    activeState: PropTypes.string.isRequired,
     filteredData: PropTypes.array.isRequired,
     handleResultsSort: PropTypes.func.isRequired,
-    highlightedCommunity: PropTypes.number,
+    highlightedCommunity: PropTypes.string,
     history: PropTypes.object.isRequired,
     mobile: PropTypes.bool.isRequired,
     sortFilterStatus: PropTypes.string.isRequired,

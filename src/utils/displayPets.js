@@ -1,13 +1,15 @@
+import React from 'react';
+
 const displayPets = (cats, dogs) => {
     if (cats && dogs) {
-        return { petText: "Pet Friendly", petClass: "paw" };
+        return <span><i className="fa fa-paw"></i> Pet Friendly</span>;
     } else if (cats) {
-        return { petText: "Cats Only", petClass: "paw" };
+        return <span><i className="fa fa-paw"></i> Cats Only</span>;
     } else if (dogs) {
-        return { petText: "Dogs Only", petClass: "paw" };
+        return <span><i className="fa fa-paw"></i> Dogs Only</span>;
     }
 
-    return { petText: "No Pets Allowed", petClass: "no-pets" };
+    return <span>No Pets Allowed</span>
 };
 
 export default displayPets;

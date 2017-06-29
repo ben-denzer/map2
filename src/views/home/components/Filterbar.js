@@ -52,14 +52,14 @@ function Filterbar(props) {
                 handleFilter={handleFilter}
                 toggleFilterOptions={toggleFilterOptions}
             />
-            <BathroomsFilter
+            {/*<BathroomsFilter
                 activeBathrooms={activeBathrooms}
                 activeState={activeState}
                 allData={allData}
                 handleCounter={handleCounter}
                 handleFilter={handleFilter}
                 toggleFilterOptions={toggleFilterOptions}
-            />
+            />*/}
 
             <img
                 id="reset_arrow"

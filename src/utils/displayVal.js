@@ -5,7 +5,9 @@ const displayVal = (string, array) => {
         return `${parseFloat(array[0])} ${string}`;
     }
 
-    const sorted = array.map(a => Number(a)).sort((a, b) => {
+    const sorted = array.filter(a => {
+        return parseFloat(a) === 0 || parseFloat(a) ? a : false;
+    }).map(a => Number(a)).sort((a, b) => {
         if (a === b) return 0;
         return a < b ? -1 : 1;
     });

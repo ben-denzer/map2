@@ -18,15 +18,13 @@ function CommunityPreview(props) {
         city,
         community_name: communityName,
         community_url: website,
-        data,
         dogs,
         image,
         key: id,
         phone,
+        promotion,
         state,
     } = allCommunityData;
-
-    const { petText, petClass } = displayPets(cats, dogs);
 
     return (
         <div
@@ -52,17 +50,22 @@ function CommunityPreview(props) {
                             </div>
                         </div>
                         <div className="previes-text preview-pets">
-                            <div className={`box ${petClass}`} /> {petText}
+                            {displayPets(cats, dogs)}
                         </div>
                     </div>
                     <div className="preview-info-right">
-                        Specials
+                        {promotion.headline &&
+                            <div>
+                                <div className="specials">Specials</div>
+                                <div>{promotion.headline}</div>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
             <div className="preview-bottom">
                 <div>
-                    <div className="box light" /> <a href={website}>View Website</a>
+                    <div className="box light" /> <a href={website} target="_blank">View Website</a>
                 </div>
                 <div>
                     <div className="box light" /> <a href={`tel:${phone}`}>{phone}</a>
@@ -73,12 +76,12 @@ function CommunityPreview(props) {
 }
 
 CommunityPreview.defaultProps = {
-    highlightedCommunity: null,
+    highlightedCommunity: "",
 };
 
 CommunityPreview.propTypes = {
     allCommunityData: PropTypes.object.isRequired,
-    highlightedCommunity: PropTypes.number,
+    highlightedCommunity: PropTypes.string,
     toggleHighlight: PropTypes.func.isRequired,
 };
 

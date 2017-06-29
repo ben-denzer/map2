@@ -4,11 +4,11 @@ $sidebarTransition: .75s;
     position: absolute;
     right: 0;
     width: 320px;
-    height: 100%;
-    top: 0;
+    height: calc(100% - 40px);
+    top: 40px;
     display: flex;
     overflow-x: hidden;
-    background-color: transparentize($color1, .1);
+    background-color: $color3;
 
     &.open {
         #search_results_container {
@@ -22,10 +22,12 @@ $sidebarTransition: .75s;
 
 .sidebar-container {
     position: absolute;
+    margin-top: -40px;
     top: calc(#{$topbarHeight} + #{$filterbarHeight});
     z-index: 2;
     max-height: $mapHeight;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
     border: 1px solid #666;
     border-bottom: 0;
     width: 320px;
@@ -54,6 +56,10 @@ $sidebarTransition: .75s;
         position: relative;
         text-align: right;
         transition: all $sidebarTransition ease-in-out;
+
+        #search_menu_title {
+            font-family: Oswald, sans-serif;
+        }
 
         #results_menu_filter {
             position: relative;
@@ -119,7 +125,11 @@ $sidebarTransition: .75s;
         }
 
         &.highlighted {
-            background: yellow;
+            background: #ffffef;
+        }
+
+        &:hover {
+            cursor: pointer;
         }
 
         .preview-image {
@@ -135,7 +145,8 @@ $sidebarTransition: .75s;
             flex-direction: column;
 
             .preview-title {
-                font-size: 16px;
+                font-family: Oswald, sans-serif;
+                font-size: 17px;
                 margin: 0;
             }
 
@@ -146,7 +157,7 @@ $sidebarTransition: .75s;
 
             .preview-info {
                 display: flex;
-                font-size: 12px;
+                font-size: 14px;
 
                 .preview-info-left {
                     display: flex;
@@ -156,18 +167,26 @@ $sidebarTransition: .75s;
                     .preview-bedbath {
                         display: flex;
                     }
+
+                    .preview-pets {
+                        margin-left: 5px;
+                    }
                 }
 
                 .preview-info-right {
                     display: flex;
                     flex-direction: column;
                     width: 40%;
+
+                    .specials {
+                        font-weight: bold;
+                    }
                 }
             }
         }
 
         .preview-bottom {
-            background-color: $color2;
+            background-color: #5DA2CC;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -188,6 +207,7 @@ $sidebarTransition: .75s;
     &#sidebar_filter_container {
         right: -320px;
         transition: all $sidebarTransition ease-in-out;
+        background: $color3;
 
         .sidebar-title {
             width: 100%;

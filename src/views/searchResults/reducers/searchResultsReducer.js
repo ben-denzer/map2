@@ -1,6 +1,6 @@
 const initialState = {
     activeSort: "",
-    highlightedCommunity: 3606761,
+    highlightedCommunity: "",
     sortFilterStatus: "",
 };
 

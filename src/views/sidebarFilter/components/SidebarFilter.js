@@ -68,8 +68,8 @@ function SidebarFilter(props) {
     ));
 
     const openFilter = props.sidebarMultiSelectStatus;
-    const possibleMin = Math.min(...allData.map(a => a.data.parsedPrices.min));
-    const possibleMax = Math.max(...allData.map(a => a.data.parsedPrices.max));
+    const possibleMin = Math.min(...allData.map(a => a.parsedPrices.min));
+    const possibleMax = Math.max(...allData.map(a => a.parsedPrices.max));
     const minPrice = isFinite(possibleMin) ? possibleMin : null;
     const maxPrice = isFinite(possibleMax) ? possibleMax : null;
 

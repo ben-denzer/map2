@@ -1,12 +1,18 @@
 const parseRentPrices = (community) => {
-    const reg = /\d{3,4}/g;
-    const price = community.data.floorplan_prices;
-    const allPrices = price.match(reg);
     const parsed = {
-        min: Math.min.apply(null, allPrices),
-        max: Math.max.apply(null, allPrices),
+        min: Infinity,
+        max: -Infinity,
     };
-    community.data.parsedPrices = parsed;
+    for (let i in community.floorplan_prices) {
+        if (community.floorplan_prices[i].min && community.floorplan_prices[i].min < parsed.min) {
+            parsed.min = community.floorplan_prices[i].min;
+        }
+        if (community.floorplan_prices[i].max && community.floorplan_prices[i].max > parsed.max) {
+            parsed.max = community.floorplan_prices[i].max;
+        }
+    }
+
+    community.parsedPrices = parsed;
     return community;
 };
 

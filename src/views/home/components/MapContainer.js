@@ -58,7 +58,7 @@ class MapContainer extends Component {
 }
 
 MapContainer.defaultProps = {
-    highlightedCommunity: null,
+    highlightedCommunity: "",
 };
 
 MapContainer.propTypes = {
@@ -66,7 +66,7 @@ MapContainer.propTypes = {
     activeState: PropTypes.string.isRequired,
     defaultMapLocation: PropTypes.object.isRequired,
     filteredData: PropTypes.array.isRequired,
-    highlightedCommunity: PropTypes.number,
+    highlightedCommunity: PropTypes.string,
     toggleHighlight: PropTypes.func.isRequired,
 };
 

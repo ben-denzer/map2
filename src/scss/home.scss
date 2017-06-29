@@ -5,10 +5,19 @@
     #top_bar {
         width: 100%;
         height: $topbarHeight;
+        font-family: Oswald, sans-serif;
         font-size: $headerFontSize;
         color: $mainBgColor;
         background-color: $topbarBg;
         text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            height: 35px;
+            margin: 7px 5px 0 5px;
+        }
     }
 
     #filterbar {

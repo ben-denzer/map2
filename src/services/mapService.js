@@ -1,5 +1,6 @@
 /* eslint-disable */
 const getCoords = community => ({ lat: community.lat, lng: community.lng });
+import displayVal from "../utils/displayVal";
 
 let map;
 
@@ -62,7 +63,7 @@ function initMap(options, highlightedCommunity, toggleHighlight) {
             image,
             key,
             state,
-            website,
+            community_url: website,
         } = a.allData;
 
         let infoWindowBeds = "";
@@ -73,9 +74,7 @@ function initMap(options, highlightedCommunity, toggleHighlight) {
                 infoWindowBeds = `${beds[0]} Bedrooms`;
             }
         } else {
-            const lowest = Math.min(...beds);
-            const highest = Math.max(...beds);
-            infoWindowBeds = `${lowest}-${highest} Bedrooms`;
+            infoWindowBeds = displayVal("beds", beds);
         }
 
         const infoWindowContent = `
