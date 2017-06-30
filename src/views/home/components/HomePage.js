@@ -48,7 +48,6 @@ class HomePage extends Component {
     }
 
     render() {
-        console.log(this.props.filteredData); // eslint-disable-line
         if (this.props.mobile) {
             return (
                 <div id="mobile_container" className={!this.props.history.location.hash && 'first-page'}>

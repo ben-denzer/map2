@@ -105,13 +105,12 @@ function SidebarFilter(props) {
                 </div>
                 <div
                     className={`multi-filter-options ${openFilter === "amenities" ? "open" : ""}`}
-                    hidden={openFilter !== "amenities"}
                 >
                     {amenities}
                 </div>
             </div>
 
-            <div className="multi-filter" id="amenities_filter" hidden={!features.length}>
+            <div className="multi-filter" id="features_filter" hidden={!features.length}>
                 <div
                     className="multi-filter-title"
                     data-filter="features"
@@ -128,7 +127,6 @@ function SidebarFilter(props) {
                 </div>
                 <div
                     className={`multi-filter-options ${openFilter === "features" ? "open" : ""}`}
-                    hidden={openFilter !== "features"}
                 >
                     {features}
                 </div>

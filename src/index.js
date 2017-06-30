@@ -9,9 +9,11 @@ if (document.getElementById("root")) {
     );
 }
 
-if (document.getElementById("only_search")) {
+if (document.getElementById("quick-search-form-region")) {
     ReactDOM.render(
         <App onlySearch />,
-        document.getElementById("only_search")
+        document.getElementById("quick-search-form-region")
     );
 }
+
+

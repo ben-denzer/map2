@@ -234,6 +234,7 @@ $sidebarTransition: .75s;
             margin-top: 30px;
             color: $color2;
             font-weight: 900;
+            font-family: Oswald, sans-serif;
         }
 
         .sidebar-text {
@@ -257,6 +258,7 @@ $sidebarTransition: .75s;
             margin: 20px auto;
             border-bottom: 1px solid transparentize($color2, .6);
             position: relative;
+            transition: all 1s ease-in-out;
 
             &:hover {
                 cursor: pointer;
@@ -279,13 +281,16 @@ $sidebarTransition: .75s;
             }
 
             .multi-filter-options {
-                background-color: white;
                 width: 80%;
-                position: absolute;
                 z-index: 3;
                 top: 5px;
-                max-height: 200px;
                 overflow: auto;
+                transition: all .3s ease-in-out;
+                height: 0;
+
+                &.open {
+                    height: 200px;
+                }
 
                 .multi-filter-option {
                     display: flex;
@@ -314,7 +319,7 @@ $sidebarTransition: .75s;
 
         .slider-container {
             width: 80%;
-            margin: 15px auto;
+            margin: 15px auto 40px;
 
             .slider-label {
                 color: transparentize($color2, .2);

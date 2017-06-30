@@ -15,26 +15,44 @@ function HPSearchbar(props) {
         toggleFilterOptions,
     } = props;
 
+    const regionOptions = stateOptions.map(a => {
+        return (
+            <option value={a}>{a}</option>
+        );
+    });
+
     return (
-        <div id="hp_search">
-            <StateFilter
-                activeFilter={activeFilter}
-                activeState={activeState}
-                handleFilter={handleFilter}
-                history={history}
-                selectState={selectState}
-                stateOptions={stateOptions}
-                toggleFilterOptions={toggleFilterOptions}
-            />
-            <BedroomsDropdown
-                activeFilter={activeFilter}
-                activeBedrooms={activeBedrooms}
-                handleFilter={handleFilter}
-                history={history}
-                toggleFilterOptions={toggleFilterOptions}
-            />
-        </div>
+        <form id="quick-search-form" className="form-inline">
+            <div className="form-group">
+                <select name="state" id="state-selector" data-placeholder="Select a state">
+                    <option selected disabled>Select a state</option>
+                    {regionOptions}
+                </select>
+            </div>
+        </form>
     );
+
+    // return (
+    //     <div id="hp_search">
+
+    //         {/*<StateFilter
+    //             activeFilter={activeFilter}
+    //             activeState={activeState}
+    //             handleFilter={handleFilter}
+    //             history={history}
+    //             selectState={selectState}
+    //             stateOptions={stateOptions}
+    //             toggleFilterOptions={toggleFilterOptions}
+    //         />
+    //         <BedroomsDropdown
+    //             activeFilter={activeFilter}
+    //             activeBedrooms={activeBedrooms}
+    //             handleFilter={handleFilter}
+    //             history={history}
+    //             toggleFilterOptions={toggleFilterOptions}
+    //         />*/}
+    //     </div>
+    // );
 }
 
 HPSearchbar.propTypes = {

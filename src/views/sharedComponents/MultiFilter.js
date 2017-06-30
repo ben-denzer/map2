@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function MultiFilter(props) {
     return (
-        <div className="multi-filter" id="amenities_filter">
+        <div className="multi-filter">
             <div
                 className="multi-filter-title"
                 data-filter="amenities"
@@ -20,7 +20,6 @@ function MultiFilter(props) {
             </div>
             <div
                 className={`multi-filter-options ${openFilter === "amenities" ? "open" : ""}`}
-                hidden={openFilter !== "amenities"}
             >
                 {amenities}
             </div>
