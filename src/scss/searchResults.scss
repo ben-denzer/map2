@@ -111,6 +111,24 @@ $sidebarTransition: .75s;
         }
     }
 
+    #filter_pets_label {
+        width: 80%;
+        margin: 20px auto -40px;
+        color: transparentize($color2, .2);
+    }
+
+    #filter_pets_container {
+        .md-btn--icon {
+            padding-left: 0;
+        }
+        .pet-icon {
+            height: 50px;
+            width: auto;
+            margin-left: -25px;
+            margin-right: 20px;
+        }
+    }
+
     .community-preview-container {
         right: 0;
         width: 320px;

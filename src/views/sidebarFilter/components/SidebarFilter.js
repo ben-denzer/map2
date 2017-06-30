@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import Checkbox from "react-md/lib/SelectionControls/Checkbox";
 // import SelectField from 'react-md/lib/SelectFields';
 import RangeSlider from "../../sharedComponents/RangeSlider";
+import catIcon from "../../../img/cat.png";
+import dogIcon from "../../../img/dog.png";
 
 function SidebarFilter(props) {
     const {
@@ -143,24 +145,27 @@ function SidebarFilter(props) {
                 />
             }
 
+            <div id="filter_pets_label" className="filter-label">
+                Pet Friendly <i className="fa fa-paw" />
+            </div>
 
             <div id="filter_pets_container">
+                <Checkbox
+                    id="filter_dogs"
+                    data-filter="dogsFilter"
+                    label={<img className="pet-icon" src={dogIcon} alt="dogs" />}
+                    name="dogs"
+                    checked={dogsSelected}
+                    onChange={() => handleCheckbox("dogsSelected")}
+                />
+
                 <Checkbox
                     id="filter_cats"
                     data-filter="catsFilter"
                     name="cats"
-                    label="Cats"
+                    label={<img className="pet-icon" src={catIcon} alt="cats" />}
                     checked={catsSelected}
                     onChange={() => handleCheckbox("catsSelected")}
-                />
-
-                <Checkbox
-                    id="filter_dogs"
-                    data-filter="dogsFilter"
-                    label="Dogs"
-                    name="dogs"
-                    checked={dogsSelected}
-                    onChange={() => handleCheckbox("dogsSelected")}
                 />
             </div>
         </div>
