@@ -21,15 +21,15 @@ function SidebarFilter(props) {
         toggleMultiSelect,
     } = props;
 
-    const allAmenities = new Set(
-        allData.map(a => [...a.community_features]).filter((b) => {
-            // dishwasher also shows up in fp_features so it is really confusing
-            // to have it here too - plus it makes it give bad results
-            if (!/dishwasher/i.test(b)) {
-                return b;
+    const allAmenities = [];
+    allData.forEach(a => {
+        const communityAmen = a.community_features;
+        communityAmen.forEach(b => {
+            if (!/dishwasher/i.test(b) && allAmenities.indexOf(b) === -1) {
+                allAmenities.push(b);
             }
-        }).reduce((c, d) => [...c, ...d], []),
-    );
+        });
+    });
 
     const amenities = [...allAmenities].map(a => (
         <div
@@ -48,9 +48,15 @@ function SidebarFilter(props) {
         </div>
     ));
 
-    const allFeatures = new Set(
-        allData.map(a => [...a.floorplan_features]).reduce((b, c) => [...b, ...c], []),
-    );
+    const allFeatures = [];
+    allData.forEach(a => {
+        const commFeatures = a.floorplan_features;
+        commFeatures.forEach(b => {
+            if (allFeatures.indexOf(b) === -1) {
+                allFeatures.push(b);
+            }
+        });
+    });
 
     const features = [...allFeatures].map(a => (
         <div

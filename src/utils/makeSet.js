@@ -2,9 +2,9 @@
 
 function makeSet(arr) {
     const tempArr = [];
-    for (const i of arr) {
-        if (tempArr.indexOf(i) === -1) {
-            tempArr.push(i);
+    for (let i in arr) {
+        if (tempArr.indexOf(arr[i]) === -1) {
+            tempArr.push(arr[i]);
         }
     }
     return tempArr;
