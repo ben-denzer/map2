@@ -19,17 +19,17 @@ function SearchResultsMenu(props) {
     }
 
     const firstCommunity = filteredData[0];
-    const stateDisplay = stateOptions.filter((a) => {
-        if (a === firstCommunity.state) {
-            return a;
-        }
-        return false;
-    })[0];
+    // const stateDisplay = stateOptions.filter((a) => {
+    //     if (a === firstCommunity.state) {
+    //         return a;
+    //     }
+    //     return false;
+    // })[0];
 
     return (
         <div id="search_results_menu">
             <div id="search_menu_toggle" />
-            <div id="search_menu_title">{activeState}</div>
+            <div id="search_menu_title">{activeState !== 'all' && decodeURI(activeState)}</div>
             <SearchMenuFilter
                 activeSort={activeSort}
                 handleResultsSort={handleResultsSort}

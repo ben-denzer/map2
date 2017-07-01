@@ -18,16 +18,21 @@ function StateFilter(props) {
             data-state={a.state}
             onClick={() => {
                 selectState(a);
-                history.push(`/#state=${encodeURI(a)}&view=list`);
+                history.push(`/#region=${encodeURI(a)}&view=list`);
             }}
         >
             {a}
         </div>
     ));
 
-    const filterTitle = activeState && stateOptions.length ?
-        stateOptions.filter(a => a === activeState)[0] :
-        "Choose A Region";
+    let filterTitle = "Choose A Region";
+    if (activeState && activeState !== "all") {
+        filterTitle = decodeURI(activeState);
+    }
+
+    // activeState && stateOptions.length ?
+    //     stateOptions.filter(a => a === activeState)[0] :
+    //     "Choose A Region";
 
     return (
         <div id="state_filter" className="filterbar-select">

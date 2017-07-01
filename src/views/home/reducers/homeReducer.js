@@ -75,6 +75,22 @@ export default function homeReducer(state = initialState, action) {
             {
                 active: initialState.active,
                 activeFilter: "",
+                activeState: "",
+            },
+        );
+
+    case "SET_BEDROOMS":
+        return Object.assign(
+            {},
+            state,
+            {
+                active: Object.assign(
+                    {},
+                    state.active,
+                    {
+                        activeBedrooms: action.num.toString(),
+                    },
+                ),
             },
         );
 

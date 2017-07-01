@@ -65,7 +65,7 @@ function CommunityPreview(props) {
             </div>
             <div className="preview-bottom">
                 <div>
-                    <div className="box light" /> <a href={website} target="_blank">View Website</a>
+                    <div className="box light" /> <a href={website} target="_blank" rel="noopener noreferrer">View Website</a>
                 </div>
                 <div>
                     <div className="box light" /> <a href={`tel:${phone}`}>{phone}</a>

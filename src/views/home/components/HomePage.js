@@ -14,19 +14,23 @@ class HomePage extends Component {
     }
     componentDidMount() {
         if (!this.props.activeState) {
-            // const hash = this.props.history.location.hash;
-            // if (hash) {
-            //     const stateIndex = hash.search(/state=\w\w/);
-            //     // const cityIndex = hash.search(/city=/);
-            //     if (stateIndex === 0 || stateIndex) {
-            //         const stateToFind = hash.slice(stateIndex + 6, stateIndex + 8);
-            //         this.props.selectState({ stateToFind });
-            //     }
-            //     // if (cityIndex) {
-            //     //     const cityToTheEnd = hash.slice(cityIndex + 5);
-            //     //     const cityToFind = cityToTheEnd.slice(0, cityToTheEnd.indexOf('&'));
-            //     // }
-            // }
+            const hash = this.props.history.location.hash;
+            if (hash) {
+                const regionIndex = hash.search(/region=/);
+                const bedroomIndex = hash.search(/br=/);
+                if (regionIndex === 0 || regionIndex) {
+                    const rawRegion = hash.slice(regionIndex + 7);
+                    const stateToFind = rawRegion.slice(0, rawRegion.indexOf('&'));
+                    this.props.selectState(decodeURI(stateToFind));
+                }
+                if (bedroomIndex && parseInt(bedroomIndex) >= 0) {
+                    const rawBedrooms = hash.slice(bedroomIndex + 3);
+                    const brToFind = rawBedrooms.slice(0, rawBedrooms.indexOf('&'));
+                    setTimeout(() => this.props.setBedrooms(brToFind), 2000);
+                }
+            } else {
+                this.props.selectState('all');
+            }
         }
         // Close the filter options if they click anywhere else on the page
         document.addEventListener("click", (e) => {
@@ -87,6 +91,7 @@ HomePage.propTypes = {
     mobile: PropTypes.bool.isRequired,
     history: PropTypes.object.isRequired,
     selectState: PropTypes.func.isRequired,
+    setBedrooms: PropTypes.func.isRequired,
     sidebarFilterVisibility: PropTypes.bool.isRequired,
     toggleFilterOptions: PropTypes.func.isRequired,
 };

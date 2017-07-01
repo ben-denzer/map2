@@ -6,6 +6,7 @@ import {
     RESET_FILTERS,
     RESET_SIDEBAR_FILTERS,
     SELECT_FILTER_ITEM,
+    SET_BEDROOMS,
     SET_CITY,
     TOGGLE_FILTER,
     TOGGLE_SIDEBAR_FILTER_VISIBILITY,
@@ -35,6 +36,8 @@ const selectState = region => (dispatch) => {
     dispatch({ type: HIGHLIGHT_COMMUNITY });
 };
 
+const setBedrooms = num => ({ type: SET_BEDROOMS, num });
+
 const setCity = city => ({ type: SET_CITY, city });
 
 const toggleFilterOptions = filter => (dispatch, getState) => {
@@ -52,6 +55,7 @@ export {
     handleFilter,
     resetFilters,
     selectState,
+    setBedrooms,
     setCity,
     toggleFilterOptions,
     toggleSidebarFilter,

@@ -13,6 +13,7 @@ export const RESET_SIDEBAR_FILTERS = "RESET_SIDEBAR_FILTERS";
 export const RESULTS_SORT = "RESULTS_SORT";
 export const SELECT_FILTER_ITEM = "SELECT_FILTER_ITEM";
 export const SELECT_STATE = "SELECT_STATE";
+export const SET_BEDROOMS = "SET_BEDROOMS";
 export const SET_CITY = "SET_CITY";
 export const SET_MOBILE = "SET_MOBILE";
 export const SLIDER_CHANGE = "SLIDER_CHANGE";

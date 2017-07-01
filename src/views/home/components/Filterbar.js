@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import BathroomsFilter from "./filters/BathroomsFilter";
+// import BathroomsFilter from "./filters/BathroomsFilter";
 import BedroomsFilter from "./filters/BedroomsFilter";
 import CityFilter from "./filters/CityFilter";
 import StateFilter from "./filters/StateFilter";
@@ -9,7 +9,7 @@ import resetArrow from "../../../img/reset_arrow.png";
 
 function Filterbar(props) {
     const {
-        activeBathrooms,
+        // activeBathrooms,
         activeBedrooms,
         activeCity,
         activeFilter,
@@ -66,7 +66,11 @@ function Filterbar(props) {
                 className={!activeState && "disabled"}
                 src={resetArrow}
                 alt="Reset Filters"
-                onClick={resetFilters}
+                onClick={() => {
+                    selectState('all');
+                    history.push(history.location.pathname + '#region=all&view=list');
+                    resetFilters();
+                }}
             />
             <img
                 id="sliders_thumb"
@@ -80,7 +84,7 @@ function Filterbar(props) {
 }
 
 Filterbar.propTypes = {
-    activeBathrooms: PropTypes.string.isRequired,
+    // activeBathrooms: PropTypes.string.isRequired,
     activeBedrooms: PropTypes.string.isRequired,
     activeCity: PropTypes.string.isRequired,
     activeFilter: PropTypes.string.isRequired,
