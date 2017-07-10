@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import makeSet from "../../../utils/makeSet";
 
 class HPSearchbar extends Component {
     constructor(props) {
@@ -20,35 +21,25 @@ class HPSearchbar extends Component {
             .then(res => res.json())
             .then(communities => this.setState({ communities }))
             .catch(err => console.log(err));
-        }
+    }
 
     render() {
-        const {
-            stateOptions,
-        } = this.props;
-
+        const { stateOptions } = this.props;
         const { communities } = this.state;
 
-        // Making a set, ie11 doesn't like sets so doing it the old way
         let bedroomOptions = [];
         communities.forEach(a => {
-            const communityBedrooms = Object.keys(a.bed_bath_combos);
-            if (communityBedrooms || communityBedrooms.length) {
-                communityBedrooms.forEach(b => {
-                    if (bedroomOptions.indexOf(b) === -1) {
-                        bedroomOptions.push(b);
-                    }
-                });
-            }
+            const commBedrooms = Object.keys(a.bed_bath_combos);
+            bedroomOptions = makeSet([...bedroomOptions, ...commBedrooms]).sort((a, b) => {
+                if (a === b) return 0;
+                return a < b ? -1 : 1;
+            });
         });
 
         // Remove 0 and keep 'Studio'
         const indexOfZeroBrs = bedroomOptions.indexOf("0");
         if (indexOfZeroBrs >= 0) {
-            bedroomOptions = [
-                ...bedroomOptions.slice(0, indexOfZeroBrs),
-                ...bedroomOptions.slice(indexOfZeroBrs + 1)
-            ];
+            bedroomOptions = ["Studio", ...bedroomOptions.slice(1, -1)];
         }
 
         const brOptionsList = bedroomOptions.map(a => {

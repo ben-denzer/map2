@@ -1,4 +1,4 @@
-// IE 11 had a problem on my last app when I used sets
+// IE 11 has a problem with sets, check polyfills
 
 function makeSet(arr) {
     const tempArr = [];
