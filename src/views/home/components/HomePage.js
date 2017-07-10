@@ -23,7 +23,7 @@ class HomePage extends Component {
                     const stateToFind = rawRegion.slice(0, rawRegion.indexOf('&'));
                     this.props.selectState(decodeURI(stateToFind));
                 }
-                if (bedroomIndex && parseInt(bedroomIndex) >= 0) {
+                if (bedroomIndex && parseInt(bedroomIndex, 10) >= 0) {
                     const rawBedrooms = hash.slice(bedroomIndex + 3);
                     const brToFind = rawBedrooms.slice(0, rawBedrooms.indexOf('&'));
                     setTimeout(() => this.props.setBedrooms(brToFind), 2000);

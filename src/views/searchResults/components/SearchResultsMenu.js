@@ -10,7 +10,7 @@ function SearchResultsMenu(props) {
         handleResultsSort,
         // mobile,
         sortFilterStatus,
-        stateOptions,
+        // stateOptions,
         toggleSortFilter,
     } = props;
 
@@ -18,7 +18,7 @@ function SearchResultsMenu(props) {
         return <div />;
     }
 
-    const firstCommunity = filteredData[0];
+    // const firstCommunity = filteredData[0];
     // const stateDisplay = stateOptions.filter((a) => {
     //     if (a === firstCommunity.state) {
     //         return a;
