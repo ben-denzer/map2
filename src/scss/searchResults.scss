@@ -33,6 +33,38 @@ $sidebarTransition: .75s;
     width: 320px;
     transition: all $sidebarTransition ease-in-out;
 
+    .text-box {
+        text-align: center;
+
+        input {
+            width: 80%;
+            background-color: transparent;
+            margin-left: auto;
+            margin-right: auto;
+            border: 0;
+            border-bottom: 1px solid transparentize($color2, .6);
+            font-size: 15px;
+            color: transparentize($color2, .2);
+
+            &:focus {
+                outline: 1px;
+            }
+
+            &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                color: transparentize($color2, .2);
+            }
+            &::-moz-placeholder { /* Firefox 19+ */
+                color: transparentize($color2, .2);
+            }
+            &:-ms-input-placeholder { /* IE 10+ */
+                color: transparentize($color2, .2);
+            }
+            &:-moz-placeholder { /* Firefox 18- */
+                color: transparentize($color2, .2);
+            }
+        }
+    }
+
     // &.open {
     //     &#sidebar_filter_container {
     //         right: 0;
