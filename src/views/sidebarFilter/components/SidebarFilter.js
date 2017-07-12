@@ -14,7 +14,9 @@ function SidebarFilter(props) {
         catsSelected,
         dogsSelected,
         featuresSelected,
+        location,
         handleCheckbox,
+        handleLocationChange,
         handleMultiSelect,
         handleSliderChange,
         sidebarFilterVisibility,
@@ -92,6 +94,15 @@ function SidebarFilter(props) {
                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
                 when an unknown printer took a galley of type and scrambled it
                 to make a type specimen book.
+            </div>
+
+            <div className="text-box" id="location_filter">
+                <input
+                    type="text"
+                    placeholder="Location (City, State)"
+                    value={location}
+                    onChange={handleLocationChange}
+                />
             </div>
 
             <div className="multi-filter" id="amenities_filter" hidden={!amenities.length}>
@@ -183,8 +194,10 @@ SidebarFilter.propTypes = {
     dogsSelected: PropTypes.bool.isRequired,
     featuresSelected: PropTypes.array.isRequired,
     handleCheckbox: PropTypes.func.isRequired,
+    handleLocationChange: PropTypes.func.isRequired,
     handleMultiSelect: PropTypes.func.isRequired,
     handleSliderChange: PropTypes.func.isRequired,
+    location: PropTypes.string.isRequired,
     sidebarFilterVisibility: PropTypes.bool.isRequired,
     sidebarMultiSelectStatus: PropTypes.string.isRequired,
     toggleMultiSelect: PropTypes.func.isRequired,

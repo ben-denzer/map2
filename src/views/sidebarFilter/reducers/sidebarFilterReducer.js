@@ -3,6 +3,7 @@ const initialState = {
     catsSelected: false,
     dogsSelected: false,
     featuresSelected: [],
+    location: "",
     priceFilter: [0, 0],
     sidebarMultiSelectStatus: "",
 };
@@ -13,6 +14,8 @@ export default function sidebarFiterReducer(state = initialState, action) {
         return initialState;
     case "HANDLE_CHECKBOX":
         return Object.assign({}, state, { [action.filter]: !state[action.filter] });
+    case "HANDLE_LOCATION_CHANGE":
+        return Object.assign({}, state, { location: action.location });
     case "HANDLE_MULTI_SELECT":
         // if item is already in the list
         if (state[action.filter].indexOf(action.li) !== -1) {

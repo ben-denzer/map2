@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import {
     handleCheckbox,
+    handleLocationChange,
     handleMultiSelect,
     handleSliderChange,
     toggleMultiSelect,
@@ -12,6 +13,7 @@ const mapStateToProps = state => ({
     catsSelected: state.sidebarFilter.catsSelected,
     dogsSelected: state.sidebarFilter.dogsSelected,
     featuresSelected: state.sidebarFilter.featuresSelected,
+    location: state.sidebarFilter.location,
     priceFilter: state.sidebarFilter.priceFilter,
     sidebarFilterVisibility: state.home.sidebarFilterVisibility,
     sidebarMultiSelectStatus: state.sidebarFilter.sidebarMultiSelectStatus,
@@ -19,6 +21,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     handleCheckbox: filter => dispatch(handleCheckbox(filter)),
+    handleLocationChange: e => dispatch(handleLocationChange(e)),
     handleMultiSelect: e => dispatch(handleMultiSelect(e)),
     handleSliderChange: (id, valArray) => dispatch(handleSliderChange(id, valArray)),
     toggleMultiSelect: e => dispatch(toggleMultiSelect(e)),
