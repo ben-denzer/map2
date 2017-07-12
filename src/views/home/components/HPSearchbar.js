@@ -14,6 +14,7 @@ class HPSearchbar extends Component {
         };
 
         this.getCommunities = this.getCommunities.bind(this);
+        this.sortAndMapBedrooms = this.sortAndMapBedrooms.bind(this);
     }
 
     getCommunities(e) {
@@ -23,10 +24,7 @@ class HPSearchbar extends Component {
             .catch(err => console.log(err));
     }
 
-    render() {
-        const { stateOptions } = this.props;
-        const { communities } = this.state;
-
+    sortAndMapBedrooms(communities) {
         let bedroomOptions = [];
         communities.forEach(a => {
             const commBedrooms = Object.keys(a.bed_bath_combos);
@@ -42,7 +40,7 @@ class HPSearchbar extends Component {
             bedroomOptions = ["Studio", ...bedroomOptions.slice(1, -1)];
         }
 
-        const brOptionsList = bedroomOptions.map(a => {
+        return bedroomOptions.map(a => {
             let display;
             if (a === "Studio") {
                 display = "Studio";
@@ -55,6 +53,13 @@ class HPSearchbar extends Component {
                 <option key={a} value={a}>{display}</option>
             )
         });
+    }
+
+    render() {
+        const { stateOptions } = this.props;
+        const { communities } = this.state;
+
+        const brOptionsList = this.sortAndMapBedrooms(communities);
 
         const regionOptions = stateOptions.map(a => {
             return (
