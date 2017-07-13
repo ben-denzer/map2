@@ -99,7 +99,7 @@ function SidebarFilter(props) {
                 to make a type specimen book.
             </div>
 
-            <div className="text-box" id="location_filter">
+            {/*<div className="text-box" id="location_filter">
                 <input
                     type="text"
                     placeholder="Location (City, State)"
@@ -110,15 +110,16 @@ function SidebarFilter(props) {
 
             <div id="distance_slider_container">
                 <Slider
-                    discrete
                     defaultValue={distanceVal}
+                    discrete
                     id="distance_slider"
                     label="Search Radius (Miles)"
                     max={40}
-                    min={10}
+                    min={0}
+                    step={10}
                     onChange={(val) => handleDistanceChange(val)}
                 />
-            </div>
+            </div>*/}
 
             <div className="multi-filter" id="amenities_filter" hidden={!amenities.length}>
                 <div

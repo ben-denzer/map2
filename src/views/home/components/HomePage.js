@@ -16,17 +16,21 @@ class HomePage extends Component {
         if (!this.props.activeState) {
             const hash = this.props.history.location.hash;
             if (hash) {
-                const regionIndex = hash.search(/region=/);
-                const bedroomIndex = hash.search(/br=/);
-                if (regionIndex === 0 || regionIndex) {
-                    const rawRegion = hash.slice(regionIndex + 7);
-                    const stateToFind = rawRegion.slice(0, rawRegion.indexOf('&'));
-                    this.props.selectState(decodeURI(stateToFind));
-                }
-                if (bedroomIndex && parseInt(bedroomIndex, 10) >= 0) {
-                    const rawBedrooms = hash.slice(bedroomIndex + 3);
-                    const brToFind = rawBedrooms.slice(0, rawBedrooms.indexOf('&'));
-                    setTimeout(() => this.props.setBedrooms(brToFind), 2000);
+                if (/state=/.test(hash)) {
+                    console.log('state');
+                } else {
+                    const regionIndex = hash.search(/region=/);
+                    const bedroomIndex = hash.search(/br=/);
+                    if (regionIndex === 0 || regionIndex) {
+                        const rawRegion = hash.slice(regionIndex + 7);
+                        const stateToFind = rawRegion.slice(0, rawRegion.indexOf('&'));
+                        this.props.selectState(decodeURI(stateToFind));
+                    }
+                    if (bedroomIndex && parseInt(bedroomIndex, 10) >= 0) {
+                        const rawBedrooms = hash.slice(bedroomIndex + 3);
+                        const brToFind = rawBedrooms.slice(0, rawBedrooms.indexOf('&'));
+                        setTimeout(() => this.props.setBedrooms(brToFind), 2000);
+                    }
                 }
             } else {
                 this.props.selectState('all');
