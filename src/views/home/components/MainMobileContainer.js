@@ -8,10 +8,10 @@ class MainMobileContainer extends React.Component {
     render() {
         const {
             activeFilter,
-            activeState,
+            activeRegion,
             handleFilter,
             history,
-            selectState,
+            selectRegion,
             stateOptions,
             toggleFilterOptions,
         } = this.props;
@@ -20,10 +20,10 @@ class MainMobileContainer extends React.Component {
             return (
                 <MobileChooseState
                     activeFilter={activeFilter}
-                    activeState={activeState}
+                    activeRegion={activeRegion}
                     handleFilter={handleFilter}
                     history={history}
-                    selectState={selectState}
+                    selectRegion={selectRegion}
                     stateOptions={stateOptions}
                     toggleFilterOptions={toggleFilterOptions}
                 />
@@ -38,10 +38,10 @@ class MainMobileContainer extends React.Component {
 
 MainMobileContainer.propTypes = {
     activeFilter: PropTypes.string.isRequired,
-    activeState: PropTypes.string.isRequired,
+    activeRegion: PropTypes.string.isRequired,
     handleFilter: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
-    selectState: PropTypes.func.isRequired,
+    selectRegion: PropTypes.func.isRequired,
     stateOptions: PropTypes.array.isRequired,
     toggleFilterOptions: PropTypes.func.isRequired,
 };

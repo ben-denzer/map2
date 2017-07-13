@@ -30,7 +30,7 @@ const resetFilters = () => (dispatch) => {
     dispatch({ type: HIGHLIGHT_COMMUNITY });
 };
 
-const selectState = region => (dispatch) => {
+const selectRegion = region => (dispatch) => {
     dispatch(getCommunitiesInState(region));
     dispatch({ type: CLEAR_FILTERS });
     dispatch({ type: HIGHLIGHT_COMMUNITY });
@@ -54,7 +54,7 @@ export {
     handleCounter,
     handleFilter,
     resetFilters,
-    selectState,
+    selectRegion,
     setBedrooms,
     setCity,
     toggleFilterOptions,

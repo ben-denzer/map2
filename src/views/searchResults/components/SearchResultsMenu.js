@@ -5,7 +5,7 @@ import SearchMenuFilter from "./SearchMenuFilter";
 function SearchResultsMenu(props) {
     const {
         activeSort,
-        activeState,
+        activeRegion,
         filteredData,
         handleResultsSort,
         // mobile,
@@ -29,7 +29,7 @@ function SearchResultsMenu(props) {
     return (
         <div id="search_results_menu">
             <div id="search_menu_toggle" />
-            <div id="search_menu_title">{activeState !== 'all' && decodeURI(activeState)}</div>
+            <div id="search_menu_title">{activeRegion !== 'all' && decodeURI(activeRegion)}</div>
             <SearchMenuFilter
                 activeSort={activeSort}
                 handleResultsSort={handleResultsSort}
@@ -42,7 +42,7 @@ function SearchResultsMenu(props) {
 
 SearchResultsMenu.propTypes = {
     activeSort: PropTypes.string.isRequired,
-    activeState: PropTypes.string.isRequired,
+    activeRegion: PropTypes.string.isRequired,
     filteredData: PropTypes.array.isRequired,
     handleResultsSort: PropTypes.func.isRequired,
     // mobile: PropTypes.bool.isRequired,

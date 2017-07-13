@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import {
     handleFilter,
-    selectState,
+    selectRegion,
     toggleFilterOptions
 } from "../actions/filterActions";
 import { getCommunitiesInState } from "../../../api/apiActions";
@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
     const {
         active,
         activeFilter,
-        activeState,
+        activeRegion,
         allData,
         stateOptions,
     } = state.home;
@@ -26,7 +26,7 @@ const mapStateToProps = (state) => {
         activeBedrooms,
         activeCity,
         activeFilter,
-        activeState,
+        activeRegion,
         allData,
         stateOptions,
     };
@@ -35,7 +35,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     getCommunitiesInState: e => dispatch(getCommunitiesInState(e)),
     handleFilter: e => dispatch(handleFilter(e)),
-    selectState: e => dispatch(selectState(e)),
+    selectRegion: e => dispatch(selectRegion(e)),
     toggleFilterOptions: filter => dispatch(toggleFilterOptions(filter)),
 });
 

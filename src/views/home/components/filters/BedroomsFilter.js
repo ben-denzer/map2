@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function BedroomsFilter(props) {
-    const { activeBedrooms, activeState, handleCounter } = props;
+    const { activeBedrooms, activeRegion, handleCounter } = props;
 
-    if (!activeState) {
+    if (!activeRegion) {
         return (
             <div id="bedrooms_filter" className="filterbar-select select-disabled">
                 <div className="filterbar-title">Bedrooms</div>
@@ -43,7 +43,7 @@ function BedroomsFilter(props) {
 
 BedroomsFilter.propTypes = {
     activeBedrooms: PropTypes.string.isRequired,
-    activeState: PropTypes.string.isRequired,
+    activeRegion: PropTypes.string.isRequired,
     handleCounter: PropTypes.func.isRequired,
 };
 

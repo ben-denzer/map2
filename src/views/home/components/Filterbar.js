@@ -13,13 +13,13 @@ function Filterbar(props) {
         activeBedrooms,
         activeCity,
         activeFilter,
-        activeState,
+        activeRegion,
         allData,
         handleCounter,
         handleFilter,
         history,
         resetFilters,
-        selectState,
+        selectRegion,
         stateOptions,
         toggleFilterOptions,
         toggleSidebarFilter,
@@ -29,24 +29,24 @@ function Filterbar(props) {
         <div id="filterbar">
             <StateFilter
                 activeFilter={activeFilter}
-                activeState={activeState}
+                activeRegion={activeRegion}
                 handleFilter={handleFilter}
                 history={history}
-                selectState={selectState}
+                selectRegion={selectRegion}
                 stateOptions={stateOptions}
                 toggleFilterOptions={toggleFilterOptions}
             />
             <CityFilter
                 activeCity={activeCity}
                 activeFilter={activeFilter}
-                activeState={activeState}
+                activeRegion={activeRegion}
                 handleFilter={handleFilter}
                 allData={allData}
                 toggleFilterOptions={toggleFilterOptions}
             />
             <BedroomsFilter
                 activeBedrooms={activeBedrooms}
-                activeState={activeState}
+                activeRegion={activeRegion}
                 allData={allData}
                 handleCounter={handleCounter}
                 handleFilter={handleFilter}
@@ -54,7 +54,7 @@ function Filterbar(props) {
             />
             {/*<BathroomsFilter
                 activeBathrooms={activeBathrooms}
-                activeState={activeState}
+                activeRegion={activeRegion}
                 allData={allData}
                 handleCounter={handleCounter}
                 handleFilter={handleFilter}
@@ -63,21 +63,21 @@ function Filterbar(props) {
 
             <img
                 id="reset_arrow"
-                className={!activeState && "disabled"}
+                className={!activeRegion && "disabled"}
                 src={resetArrow}
                 alt="Reset Filters"
                 onClick={() => {
-                    selectState('all');
+                    selectRegion('all');
                     history.push(history.location.pathname + '#region=all&view=list');
                     resetFilters();
                 }}
             />
             <img
                 id="sliders_thumb"
-                className={!activeState && "disabled"}
+                className={!activeRegion && "disabled"}
                 src={slidersThumb}
                 alt="More Filters"
-                onClick={activeState && toggleSidebarFilter}
+                onClick={activeRegion && toggleSidebarFilter}
             />
         </div>
     );
@@ -88,13 +88,13 @@ Filterbar.propTypes = {
     activeBedrooms: PropTypes.string.isRequired,
     activeCity: PropTypes.string.isRequired,
     activeFilter: PropTypes.string.isRequired,
-    activeState: PropTypes.string.isRequired,
+    activeRegion: PropTypes.string.isRequired,
     allData: PropTypes.array.isRequired,
     handleCounter: PropTypes.func.isRequired,
     handleFilter: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     resetFilters: PropTypes.func.isRequired,
-    selectState: PropTypes.func.isRequired,
+    selectRegion: PropTypes.func.isRequired,
     stateOptions: PropTypes.array.isRequired,
     toggleFilterOptions: PropTypes.func.isRequired,
     toggleSidebarFilter: PropTypes.func.isRequired,

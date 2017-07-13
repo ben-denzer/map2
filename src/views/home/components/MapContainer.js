@@ -23,7 +23,7 @@ class MapContainer extends Component {
     componentWillReceiveProps(nextProps) {
         const {
             activeCity,
-            activeState,
+            activeRegion,
             defaultMapLocation,
             filteredData,
             highlightedCommunity,
@@ -36,7 +36,7 @@ class MapContainer extends Component {
             setTimeout(() => changeMap(options, highlightedCommunity, toggleHighlight), 0);
         } else if (activeCity !== this.props.activeCity) {
             setTimeout(() => changeMap(options, highlightedCommunity, toggleHighlight), 0);
-        } else if (activeState !== this.props.activeState) {
+        } else if (activeRegion !== this.props.activeRegion) {
             setTimeout(() => changeMap(options, highlightedCommunity, toggleHighlight), 0);
         } else if (highlightedCommunity !== this.props.highlightedCommunity) {
             setTimeout(() => changeMap(options, highlightedCommunity, toggleHighlight), 0);
@@ -44,7 +44,7 @@ class MapContainer extends Component {
     }
 
     shouldComponentUpdate(nextProps) {
-        if (this.props.activeState !== nextProps.activeState) {
+        if (this.props.activeRegion !== nextProps.activeRegion) {
             return true;
         }
         return false;
@@ -52,7 +52,7 @@ class MapContainer extends Component {
 
     render() {
         return (
-            <div id="map" className={this.props.activeState && "sidebar-open"} />
+            <div id="map" className={this.props.activeRegion && "sidebar-open"} />
         );
     }
 }
@@ -63,7 +63,7 @@ MapContainer.defaultProps = {
 
 MapContainer.propTypes = {
     activeCity: PropTypes.string.isRequired,
-    activeState: PropTypes.string.isRequired,
+    activeRegion: PropTypes.string.isRequired,
     defaultMapLocation: PropTypes.object.isRequired,
     filteredData: PropTypes.array.isRequired,
     highlightedCommunity: PropTypes.string,

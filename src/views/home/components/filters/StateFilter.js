@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 function StateFilter(props) {
     const {
         activeFilter,
-        activeState,
+        activeRegion,
         history,
-        selectState,
+        selectRegion,
         stateOptions,
         toggleFilterOptions,
     } = props;
@@ -17,7 +17,7 @@ function StateFilter(props) {
             className="filterbar-li"
             data-state={a.state}
             onClick={() => {
-                selectState(a);
+                selectRegion(a);
                 history.push(`/#region=${encodeURI(a)}&view=list`);
             }}
         >
@@ -26,12 +26,12 @@ function StateFilter(props) {
     ));
 
     let filterTitle = "Choose A Region";
-    if (activeState && activeState !== "all") {
-        filterTitle = decodeURI(activeState);
+    if (activeRegion && activeRegion !== "all") {
+        filterTitle = decodeURI(activeRegion);
     }
 
-    // activeState && stateOptions.length ?
-    //     stateOptions.filter(a => a === activeState)[0] :
+    // activeRegion && stateOptions.length ?
+    //     stateOptions.filter(a => a === activeRegion)[0] :
     //     "Choose A Region";
 
     return (
@@ -51,9 +51,9 @@ function StateFilter(props) {
 
 StateFilter.propTypes = {
     activeFilter: PropTypes.string.isRequired,
-    activeState: PropTypes.string.isRequired,
+    activeRegion: PropTypes.string.isRequired,
     history: PropTypes.object.isRequired,
-    selectState: PropTypes.func.isRequired,
+    selectRegion: PropTypes.func.isRequired,
     stateOptions: PropTypes.array.isRequired,
     toggleFilterOptions: PropTypes.func.isRequired,
 };

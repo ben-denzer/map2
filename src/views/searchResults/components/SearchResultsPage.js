@@ -28,7 +28,7 @@ class SearchResultsPage extends React.Component { // eslint-disable-line
     render() {
         const {
             activeSort,
-            activeState,
+            activeRegion,
             filteredData,
             handleResultsSort,
             highlightedCommunity,
@@ -95,7 +95,7 @@ class SearchResultsPage extends React.Component { // eslint-disable-line
             >
                 <SearchResultsMenu
                     activeSort={activeSort}
-                    activeState={activeState}
+                    activeRegion={activeRegion}
                     filteredData={filteredData}
                     handleResultsSort={handleResultsSort}
                     mobile={mobile}
@@ -115,7 +115,7 @@ SearchResultsPage.defaultProps = {
 
 SearchResultsPage.propTypes = {
     activeSort: PropTypes.string.isRequired,
-    activeState: PropTypes.string.isRequired,
+    activeRegion: PropTypes.string.isRequired,
     filteredData: PropTypes.array.isRequired,
     handleResultsSort: PropTypes.func.isRequired,
     highlightedCommunity: PropTypes.string,

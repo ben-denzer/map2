@@ -6,7 +6,7 @@ function CityFilter(props) {
     const {
         activeCity,
         activeFilter,
-        activeState,
+        activeRegion,
         allData,
         handleFilter,
         toggleFilterOptions,
@@ -27,7 +27,7 @@ function CityFilter(props) {
     ));
 
     // Early return if no state is selected
-    if (!activeState) {
+    if (!activeRegion) {
         return (
             <div id="city_filter" className="filterbar-select select-disabled">
                 <div className="filterbar-title">Choose a State First</div>
@@ -54,7 +54,7 @@ CityFilter.propTypes = {
     allData: PropTypes.array.isRequired,
     activeCity: PropTypes.string.isRequired,
     activeFilter: PropTypes.string.isRequired,
-    activeState: PropTypes.string.isRequired,
+    activeRegion: PropTypes.string.isRequired,
     handleFilter: PropTypes.func.isRequired,
     toggleFilterOptions: PropTypes.func.isRequired,
 };

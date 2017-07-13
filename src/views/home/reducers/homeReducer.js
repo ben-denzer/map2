@@ -7,7 +7,7 @@ const initialState = {
         activeFpFeatures: [],
     },
     activeFilter: "",
-    activeState: "",
+    activeRegion: "",
     allData: [],
     bathroomOptions: [],
     bedroomOptions: [],
@@ -75,7 +75,7 @@ export default function homeReducer(state = initialState, action) {
             {
                 active: initialState.active,
                 activeFilter: "",
-                activeState: "",
+                activeRegion: "",
             },
         );
 
@@ -120,14 +120,14 @@ export default function homeReducer(state = initialState, action) {
             },
         );
 
-    case "SELECT_STATE":
+    case "SELECT_REGION":
         return Object.assign(
             {},
             state,
             {
                 active: initialState.active,
                 activeFilter: "",
-                activeState: action.activeState,
+                activeRegion: action.activeRegion,
             },
         );
 

@@ -13,7 +13,7 @@ class HomePage extends Component {
         this.changeMobileView = this.changeMobileView.bind(this);
     }
     componentDidMount() {
-        if (!this.props.activeState) {
+        if (!this.props.activeRegion) {
             const hash = this.props.history.location.hash;
             if (hash) {
                 if (/state=/.test(hash)) {
@@ -24,7 +24,7 @@ class HomePage extends Component {
                     if (regionIndex === 0 || regionIndex) {
                         const rawRegion = hash.slice(regionIndex + 7);
                         const stateToFind = rawRegion.slice(0, rawRegion.indexOf('&'));
-                        this.props.selectState(decodeURI(stateToFind));
+                        this.props.selectRegion(decodeURI(stateToFind));
                     }
                     if (bedroomIndex && parseInt(bedroomIndex, 10) >= 0) {
                         const rawBedrooms = hash.slice(bedroomIndex + 3);
@@ -33,7 +33,7 @@ class HomePage extends Component {
                     }
                 }
             } else {
-                this.props.selectState('all');
+                this.props.selectRegion('all');
             }
         }
         // Close the filter options if they click anywhere else on the page
@@ -91,10 +91,10 @@ class HomePage extends Component {
 }
 
 HomePage.propTypes = {
-    activeState: PropTypes.string.isRequired,
+    activeRegion: PropTypes.string.isRequired,
     mobile: PropTypes.bool.isRequired,
     history: PropTypes.object.isRequired,
-    selectState: PropTypes.func.isRequired,
+    selectRegion: PropTypes.func.isRequired,
     setBedrooms: PropTypes.func.isRequired,
     sidebarFilterVisibility: PropTypes.bool.isRequired,
     toggleFilterOptions: PropTypes.func.isRequired,

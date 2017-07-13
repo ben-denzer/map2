@@ -7,10 +7,10 @@ import StateFilter from "../filters/StateFilter";
 function MobileChooseState(props) {
     const {
         activeFilter,
-        activeState,
+        activeRegion,
         handleFilter,
         history,
-        selectState,
+        selectRegion,
         stateOptions,
         toggleFilterOptions,
     } = props;
@@ -20,10 +20,10 @@ function MobileChooseState(props) {
             <img id="mobile_logo" src="/gridmedia/img/app-logo.png" alt="Community Name" />
             <StateFilter
                 activeFilter={activeFilter}
-                activeState={activeState}
+                activeRegion={activeRegion}
                 handleFilter={handleFilter}
                 history={history}
-                selectState={selectState}
+                selectRegion={selectRegion}
                 stateOptions={stateOptions}
                 toggleFilterOptions={toggleFilterOptions}
             />
@@ -33,10 +33,10 @@ function MobileChooseState(props) {
 
 MobileChooseState.propTypes = {
     activeFilter: PropTypes.string.isRequired,
-    activeState: PropTypes.string.isRequired,
+    activeRegion: PropTypes.string.isRequired,
     handleFilter: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
-    selectState: PropTypes.func.isRequired,
+    selectRegion: PropTypes.func.isRequired,
     stateOptions: PropTypes.array.isRequired,
     toggleFilterOptions: PropTypes.func.isRequired,
 };

@@ -4,7 +4,7 @@ import {
     ASYNC_START,
     // API_ERROR,
     COMMUNITIES_SUCCESS,
-    SELECT_STATE,
+    SELECT_REGION,
     STATES_SUCCESS,
 } from "../views/actionTypes";
 
@@ -18,7 +18,7 @@ const getCommunitiesInState = region => (dispatch) => {
                 a.is_visible && parseRentPrices(a)
             ));
             dispatch({ type: COMMUNITIES_SUCCESS, allCommunityData });
-            dispatch({ type: SELECT_STATE, activeState: region });
+            dispatch({ type: SELECT_REGION, activeRegion: region });
         }); // .catch(error => dispatch({ type: API_ERROR, error }));
 };
 
