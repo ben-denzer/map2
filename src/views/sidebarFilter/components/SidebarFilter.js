@@ -2,6 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Checkbox from "react-md/lib/SelectionControls/Checkbox";
+import Slider from 'react-md/lib/Sliders';
 // import SelectField from 'react-md/lib/SelectFields';
 import RangeSlider from "../../sharedComponents/RangeSlider";
 import catIcon from "../../../img/cat.png";
@@ -12,11 +13,13 @@ function SidebarFilter(props) {
         allData,
         amenitiesSelected,
         catsSelected,
+        distanceVal,
         dogsSelected,
         featuresSelected,
         location,
         handleCheckbox,
         handleLocationChange,
+        handleDistanceChange,
         handleMultiSelect,
         handleSliderChange,
         sidebarFilterVisibility,
@@ -101,7 +104,19 @@ function SidebarFilter(props) {
                     type="text"
                     placeholder="Location (City, State)"
                     value={location}
-                    onChange={handleLocationChange}
+                    onChange={(e) => handleLocationChange}
+                />
+            </div>
+
+            <div id="distance_slider_container">
+                <Slider
+                    discrete
+                    defaultValue={distanceVal}
+                    id="distance_slider"
+                    label="Search Radius (Miles)"
+                    max={40}
+                    min={10}
+                    onChange={(val) => handleDistanceChange(val)}
                 />
             </div>
 
@@ -194,6 +209,7 @@ SidebarFilter.propTypes = {
     dogsSelected: PropTypes.bool.isRequired,
     featuresSelected: PropTypes.array.isRequired,
     handleCheckbox: PropTypes.func.isRequired,
+    handleDistanceChange: PropTypes.func.isRequired,
     handleLocationChange: PropTypes.func.isRequired,
     handleMultiSelect: PropTypes.func.isRequired,
     handleSliderChange: PropTypes.func.isRequired,

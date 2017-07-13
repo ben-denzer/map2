@@ -65,6 +65,17 @@ $sidebarTransition: .75s;
         }
     }
 
+    #distance_slider_container {
+        width: 80%;
+        margin: 5px auto;
+
+        #distance_slider {
+            display: none;
+            width: 80%;
+            margin: 0 auto;
+        }
+    }
+
     // &.open {
     //     &#sidebar_filter_container {
     //         right: 0;
