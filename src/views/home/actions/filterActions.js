@@ -44,7 +44,6 @@ const setBedrooms = num => ({ type: SET_BEDROOMS, num });
 const setCity = city => ({ type: SET_CITY, city });
 
 const toggleFilterOptions = filter => (dispatch, getState) => {
-    console.log(`in action - filter = ${filter} - active = ${getState().home.activeFilter}`);
     if (!filter || filter === getState().home.activeFilter) {
         dispatch({ type: TOGGLE_FILTER, filter: "" });
         return;

@@ -20,7 +20,10 @@ function CityFilter(props) {
             className="filterbar-li"
             data-filter={"activeCity"}
             data-item={a}
-            onClick={handleFilter}
+            onClick={(e) => {
+                e.stopPropagation();
+                handleFilter(e)
+            }}
         >
             {a}
         </div>
@@ -39,7 +42,10 @@ function CityFilter(props) {
         <div
             id="city_filter"
             className="filterbar-select"
-            onClick={() => toggleFilterOptions("city")}
+            onClick={(e) => {
+                e.stopPropagation();
+                toggleFilterOptions("city")
+            }}
         >
             <div className="filterbar-title with-arrow">
                 <span className="filterbar-title-span">{filterTitle}</span>

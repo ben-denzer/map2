@@ -10,7 +10,6 @@ import {
 const handleCheckbox = filter => ({ type: HANDLE_CHECKBOX, filter });
 
 const handleDistanceChange = val => {
-    console.log('val', val); // eslint-disable-line
     return { type: HANDLE_DISTANCE_CHANGE, val }
 };
 
