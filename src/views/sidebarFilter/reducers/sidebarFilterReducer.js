@@ -16,7 +16,6 @@ export default function sidebarFiterReducer(state = initialState, action) {
     case "HANDLE_CHECKBOX":
         return Object.assign({}, state, { [action.filter]: !state[action.filter] });
     case "HANDLE_DISTANCE_CHANGE":
-        console.log('reducer', action.val);
         return Object.assign({}, state, { distanceVal: action.val });
     case "HANDLE_LOCATION_CHANGE":
         return Object.assign({}, state, { location: action.location });

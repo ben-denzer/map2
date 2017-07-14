@@ -35,12 +35,17 @@ function StateFilter(props) {
     //     "Choose A Region";
 
     return (
-        <div id="state_filter" className="filterbar-select">
-            <div
-                className="filterbar-title"
-                onClick={() => toggleFilterOptions("state")}
-            >
-                {filterTitle}
+        <div
+            id="state_filter"
+            className="filterbar-select"
+            onClick={(e) => {
+                e.stopPropagation();
+                toggleFilterOptions("state");
+            }}
+        >
+            <div className="filterbar-title with-arrow">
+                <span className="filterbar-title-span">{filterTitle}</span>
+                <span className={`filterbar-dropdown-arrow ${activeFilter === "state" ? "up" : ""}`} />
             </div>
             <div className="filterbar-options" hidden={activeFilter !== "state"}>
                 {options}

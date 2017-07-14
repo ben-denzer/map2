@@ -11,6 +11,14 @@ function filterData(allData, filters) {
         )
     });
 
+    if (filters.state) {
+        if (!filters.region || /all/i.test(filters.region)) {
+            tempData = tempData.filter((a) => {
+                return a.state === filters.state && a;
+            });
+        }
+    }
+
     if (filters.amenities) {
         tempData = tempData.filter((a) => {
             const allCommunityAmenities = a.community_features;

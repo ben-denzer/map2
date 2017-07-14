@@ -8,6 +8,7 @@ const initialState = {
     },
     activeFilter: "",
     activeRegion: "",
+    activeState: "",
     allData: [],
     bathroomOptions: [],
     bedroomOptions: [],
@@ -76,6 +77,7 @@ export default function homeReducer(state = initialState, action) {
                 active: initialState.active,
                 activeFilter: "",
                 activeRegion: "",
+                activeState: "",
             },
         );
 
@@ -130,6 +132,9 @@ export default function homeReducer(state = initialState, action) {
                 activeRegion: action.activeRegion,
             },
         );
+
+    case "SELECT_STATE":
+        return Object.assign({}, state, { activeState: action.state });
 
     case "SET_MOBILE":
         return Object.assign({}, state, { mobile: action.mobile });

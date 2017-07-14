@@ -36,12 +36,14 @@ function CityFilter(props) {
     }
 
     return (
-        <div id="city_filter" className="filterbar-select">
-            <div
-                className="filterbar-title"
-                onClick={() => toggleFilterOptions("city")}
-            >
-                {filterTitle}
+        <div
+            id="city_filter"
+            className="filterbar-select"
+            onClick={() => toggleFilterOptions("city")}
+        >
+            <div className="filterbar-title with-arrow">
+                <span className="filterbar-title-span">{filterTitle}</span>
+                <span className={`filterbar-dropdown-arrow ${activeFilter === "city" ? "up" : ""}`} />
             </div>
             <div className="filterbar-options" hidden={activeFilter !== "city"}>
                 {options}

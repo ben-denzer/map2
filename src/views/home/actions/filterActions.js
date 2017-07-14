@@ -6,6 +6,7 @@ import {
     RESET_FILTERS,
     RESET_SIDEBAR_FILTERS,
     SELECT_FILTER_ITEM,
+    SELECT_STATE,
     SET_BEDROOMS,
     SET_CITY,
     TOGGLE_FILTER,
@@ -36,11 +37,14 @@ const selectRegion = region => (dispatch) => {
     dispatch({ type: HIGHLIGHT_COMMUNITY });
 };
 
+const selectState = state => ({ type: SELECT_STATE, state });
+
 const setBedrooms = num => ({ type: SET_BEDROOMS, num });
 
 const setCity = city => ({ type: SET_CITY, city });
 
 const toggleFilterOptions = filter => (dispatch, getState) => {
+    console.log(`in action - filter = ${filter} - active = ${getState().home.activeFilter}`);
     if (!filter || filter === getState().home.activeFilter) {
         dispatch({ type: TOGGLE_FILTER, filter: "" });
         return;
@@ -55,6 +59,7 @@ export {
     handleFilter,
     resetFilters,
     selectRegion,
+    selectState,
     setBedrooms,
     setCity,
     toggleFilterOptions,

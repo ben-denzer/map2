@@ -13,11 +13,40 @@ class HomePage extends Component {
         this.changeMobileView = this.changeMobileView.bind(this);
     }
     componentDidMount() {
-        if (!this.props.activeRegion) {
+        this.getStateFromUrl();
+        // Close the filter options if they click anywhere else on the page
+        document.addEventListener("click", (e) => {
+            if (!/filterbar/.test(e.target.className)) {
+                this.props.toggleFilterOptions();
+            }
+        });
+    }
+
+    componentWillReceiveProps(prevProps) {
+        if (this.props.history.location.hash !== prevProps.history.location.hash) {
+            this.getStateFromUrl();
+        }
+    }
+
+    changeMobileView(newView) {
+        const oldPathname = this.props.history.location.pathname;
+        if (!newView) {
+            this.props.history.push(oldPathname);
+            return;
+        }
+        const oldHash = this.props.history.location.hash;
+        const newHash = oldHash.slice(0, oldHash.lastIndexOf('=') + 1) + newView;
+        this.props.history.push(oldPathname + newHash);
+    }
+
+    getStateFromUrl() {
+        if (!this.props.activeRegion || !/all/i.test(this.props.activeRegion)) {
             const hash = this.props.history.location.hash;
             if (hash) {
                 if (/state=/.test(hash)) {
-                    console.log('state');
+                    const stateInUrl = hash.slice(7, 9);
+                    this.props.selectState(stateInUrl);
+                    this.props.selectRegion('all');
                 } else {
                     const regionIndex = hash.search(/region=/);
                     const bedroomIndex = hash.search(/br=/);
@@ -36,23 +65,6 @@ class HomePage extends Component {
                 this.props.selectRegion('all');
             }
         }
-        // Close the filter options if they click anywhere else on the page
-        document.addEventListener("click", (e) => {
-            if (!/filterbar/.test(e.target.className)) {
-                this.props.toggleFilterOptions();
-            }
-        });
-    }
-
-    changeMobileView(newView) {
-        const oldPathname = this.props.history.location.pathname;
-        if (!newView) {
-            this.props.history.push(oldPathname);
-            return;
-        }
-        const oldHash = this.props.history.location.hash;
-        const newHash = oldHash.slice(0, oldHash.lastIndexOf('=') + 1) + newView;
-        this.props.history.push(oldPathname + newHash);
     }
 
     render() {
@@ -95,6 +107,7 @@ HomePage.propTypes = {
     mobile: PropTypes.bool.isRequired,
     history: PropTypes.object.isRequired,
     selectRegion: PropTypes.func.isRequired,
+    selectState: PropTypes.func.isRequired,
     setBedrooms: PropTypes.func.isRequired,
     sidebarFilterVisibility: PropTypes.bool.isRequired,
     toggleFilterOptions: PropTypes.func.isRequired,

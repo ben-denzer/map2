@@ -23,11 +23,31 @@
     #filterbar {
         width: 100%;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         background-color: $filterbarBg;
         height: $filterbarHeight;
         position: relative;
         z-index: 2;
+
+        #filterbar_left {
+            display: flex;
+            width: 60%;
+
+            &>div {
+                margin-left: 20px;
+            }
+        }
+
+        #filterbar_right {
+            display: flex;
+            width: 35%;
+            justify-content: flex-end;
+
+            &>img {
+                margin-right: 50px;
+                margin-left: 100px;
+            }
+        }
 
         .filterbar-select {
             margin-top: 10px;
@@ -61,9 +81,11 @@
                             height: 75%;
                             padding: 0 10px;
                             border-right: 1px solid #666;
+                            font-weight: bold;
+                            color: $color1;
 
                             &:hover {
-                                opacity: .8;
+                                color: $color2;
                                 cursor: pointer;
                             }
 
@@ -85,6 +107,23 @@
                 font-size: 18px;
                 color: $color2;
                 padding-left: 10px;
+
+                &.with-arrow {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .filterbar-dropdown-arrow {
+                        border-top: 11px solid $color1;
+                        border-left: 7px solid transparent;
+                        border-right: 7px solid transparent;
+                        margin-right: 5px;
+
+                        &.up {
+                            border-top: 0;
+                            border-bottom: 11px solid $color1;
+                        }
+                    }
+                }
             }
 
             .filterbar-options {

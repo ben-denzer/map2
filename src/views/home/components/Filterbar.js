@@ -27,31 +27,33 @@ function Filterbar(props) {
 
     return (
         <div id="filterbar">
-            <StateFilter
-                activeFilter={activeFilter}
-                activeRegion={activeRegion}
-                handleFilter={handleFilter}
-                history={history}
-                selectRegion={selectRegion}
-                stateOptions={stateOptions}
-                toggleFilterOptions={toggleFilterOptions}
-            />
-            <CityFilter
-                activeCity={activeCity}
-                activeFilter={activeFilter}
-                activeRegion={activeRegion}
-                handleFilter={handleFilter}
-                allData={allData}
-                toggleFilterOptions={toggleFilterOptions}
-            />
-            <BedroomsFilter
-                activeBedrooms={activeBedrooms}
-                activeRegion={activeRegion}
-                allData={allData}
-                handleCounter={handleCounter}
-                handleFilter={handleFilter}
-                toggleFilterOptions={toggleFilterOptions}
-            />
+            <div id="filterbar_left">
+                <StateFilter
+                    activeFilter={activeFilter}
+                    activeRegion={activeRegion}
+                    handleFilter={handleFilter}
+                    history={history}
+                    selectRegion={selectRegion}
+                    stateOptions={stateOptions}
+                    toggleFilterOptions={toggleFilterOptions}
+                />
+                <CityFilter
+                    activeCity={activeCity}
+                    activeFilter={activeFilter}
+                    activeRegion={activeRegion}
+                    handleFilter={handleFilter}
+                    allData={allData}
+                    toggleFilterOptions={toggleFilterOptions}
+                />
+                <BedroomsFilter
+                    activeBedrooms={activeBedrooms}
+                    activeRegion={activeRegion}
+                    allData={allData}
+                    handleCounter={handleCounter}
+                    handleFilter={handleFilter}
+                    toggleFilterOptions={toggleFilterOptions}
+                />
+            </div>
             {/*<BathroomsFilter
                 activeBathrooms={activeBathrooms}
                 activeRegion={activeRegion}
@@ -60,25 +62,26 @@ function Filterbar(props) {
                 handleFilter={handleFilter}
                 toggleFilterOptions={toggleFilterOptions}
             />*/}
-
-            <img
-                id="reset_arrow"
-                className={!activeRegion && "disabled"}
-                src={resetArrow}
-                alt="Reset Filters"
-                onClick={() => {
-                    selectRegion('all');
-                    history.push(history.location.pathname + '#region=all&view=list');
-                    resetFilters();
-                }}
-            />
-            <img
-                id="sliders_thumb"
-                className={!activeRegion && "disabled"}
-                src={slidersThumb}
-                alt="More Filters"
-                onClick={activeRegion && toggleSidebarFilter}
-            />
+            <div id="filterbar_right">
+                <img
+                    id="reset_arrow"
+                    className={!activeRegion && "disabled"}
+                    src={resetArrow}
+                    alt="Reset Filters"
+                    onClick={() => {
+                        selectRegion('all');
+                        history.push(history.location.pathname + '#region=all&view=list');
+                        resetFilters();
+                    }}
+                />
+                <img
+                    id="sliders_thumb"
+                    className={!activeRegion && "disabled"}
+                    src={slidersThumb}
+                    alt="More Filters"
+                    onClick={activeRegion && toggleSidebarFilter}
+                />
+            </div>
         </div>
     );
 }

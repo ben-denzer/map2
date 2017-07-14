@@ -339,10 +339,11 @@ $sidebarTransition: .75s;
                     display: flex;
                     align-items: center;
                     padding: 8px 5px;
+                    box-sizing: border-box;
+                    border-bottom: 1px solid transparent;
 
                     &:hover {
-                        background: red;
-                        color: white;
+                        border-bottom: 1px solid $color2;
                     }
 
                     .multi-checkbox {

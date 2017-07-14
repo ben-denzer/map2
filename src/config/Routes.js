@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import HomeContainer from "../views/home/containers/HomeContainer";
 import HPSearchbarContainer from "../views/home/containers/HPSearchbarContainer";
@@ -17,13 +17,13 @@ function Routes(props) {
     if (props.store.getState().home.mobile) {
         return (
             <div id="mobile_page_container">
-                <Route path="/" component={HomeContainer} />
+                <Route path="/" component={HomeContainer} key={props.history.location.hash} />
             </div>
         );
     }
     return (
         <div id="page_container">
-            <Route path="/" component={HomeContainer} />
+            <Route path="/" component={HomeContainer} key={props.history.location.hash} />
         </div>
     );
 }
@@ -32,4 +32,4 @@ Routes.propTypes = {
     store: PropTypes.object.isRequired,
 };
 
-export default Routes;
+export default withRouter(Routes);
