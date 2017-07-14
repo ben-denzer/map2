@@ -22,14 +22,13 @@ function initMap(options, highlightedCommunity, toggleHighlight) {
         })[0];
         if (community) {
             const center = { lat: community.lat, lng: community.lng };
-            const zoom = 13;
+            const zoom = 15;
             highlightOverride = { center, zoom };
         }
     }
 
     const settings = Object.assign(initialSettings, options, highlightOverride);
     const { filteredData, center, zoom } = settings;
-
 
     map = new window.google.maps.Map(document.getElementById("map"), {
         zoom,
