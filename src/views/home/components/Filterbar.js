@@ -70,7 +70,7 @@ function Filterbar(props) {
                     alt="Reset Filters"
                     onClick={() => {
                         selectRegion('all');
-                        history.push(history.location.pathname + '#region=all&view=list');
+                        history.push(`${history.location.pathname}#region=all&view=list`);
                         resetFilters();
                     }}
                 />

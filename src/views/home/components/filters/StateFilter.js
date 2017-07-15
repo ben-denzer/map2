@@ -18,7 +18,7 @@ function StateFilter(props) {
             data-state={a.state}
             onClick={() => {
                 selectRegion(a);
-                history.push(`/#region=${encodeURI(a)}&view=list`);
+                history.push(`${history.location.pathname}#region=${encodeURI(a)}&view=list`);
             }}
         >
             {a}
