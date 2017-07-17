@@ -57,7 +57,8 @@ class HomePage extends Component {
                     }
                     if (bedroomIndex && parseInt(bedroomIndex, 10) >= 0) {
                         const rawBedrooms = hash.slice(bedroomIndex + 3);
-                        const brToFind = rawBedrooms.slice(0, rawBedrooms.indexOf('&'));
+                        const brText = rawBedrooms.slice(0, rawBedrooms.indexOf('&'));
+                        const brToFind = /studio/i.test(brText) ? 0 : brText;
                         setTimeout(() => this.props.setBedrooms(brToFind), 2000);
                     }
                 }

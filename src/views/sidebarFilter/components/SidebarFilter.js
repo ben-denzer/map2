@@ -93,10 +93,7 @@ function SidebarFilter(props) {
         >
             <div className="sidebar-title">Refine Your Options</div>
             <div className="sidebar-text">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it
-                to make a type specimen book.
+                Discover what Solomon has to offer. Whether you're looking for an apartment close to work or a pet-friendly home with great amenities, our wide range of communities and locations fit any lifestyle. Schedule a tour with us today; we'd love to welcome you home!
             </div>
 
             {/*<div className="text-box" id="location_filter">
