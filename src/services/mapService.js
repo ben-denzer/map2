@@ -76,6 +76,18 @@ function initMap(options, highlightedCommunity, toggleHighlight) {
             infoWindowBeds = displayVal("beds", beds);
         }
 
+        const getDisplayWebsite = (url) => {
+            if (/^http:/.test(url)) {
+                return `www.${url.slice(7)}`;
+            } else if (/^https:/.test(url)) {
+                return `www.${url.slice(8)}`;
+            } else {
+                return url;
+            }
+        }
+
+        const displayWebsite = getDisplayWebsite(website);
+
         const infoWindowContent = `
             <div class="info-window">
                 <div class="info-left">
@@ -91,7 +103,7 @@ function initMap(options, highlightedCommunity, toggleHighlight) {
                         <div class="box dark"></div>
                         ${infoWindowBeds}
                     </div>
-                    <a href="${website}" target="_blank">${website}</a>
+                    <a href="${website}" target="_blank">${displayWebsite}</a>
                 </div>
             </div>
         `;

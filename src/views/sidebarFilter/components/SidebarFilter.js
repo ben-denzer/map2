@@ -124,13 +124,20 @@ function SidebarFilter(props) {
                     data-filter="amenities"
                     onClick={toggleMultiSelect}
                 >
-                    Amenities
-                    <div
-                        className="multi-count"
-                        data-filter="amenities"
-                        hidden={Number(amenitiesSelected.length) <= 0}
-                    >
-                        {amenitiesSelected.length}
+                    <div className="filter-title-left" data-filter="amenities">
+                        Amenities
+                    </div>
+                    <div className="filter-title-right">
+                        <div
+                            className="multi-count"
+                            data-filter="amenities"
+                            hidden={Number(amenitiesSelected.length) <= 0}
+                        >
+                            {amenitiesSelected.length}
+                        </div>
+                        <div className="expand-button-container">
+                            {openFilter === "amenities" ? " - " : " + "}
+                        </div>
                     </div>
                 </div>
                 <div
@@ -146,13 +153,20 @@ function SidebarFilter(props) {
                     data-filter="features"
                     onClick={toggleMultiSelect}
                 >
-                    Features
-                    <div
-                        className="multi-count"
-                        data-filter="features"
-                        hidden={Number(featuresSelected.length) <= 0}
-                    >
-                        {featuresSelected.length}
+                    <div className="filter-title-left" data-filter="features">
+                        Features
+                    </div>
+                    <div className="filter-title-right">
+                        <div
+                            className="multi-count"
+                            data-filter="features"
+                            hidden={Number(featuresSelected.length) <= 0}
+                        >
+                            {featuresSelected.length}
+                        </div>
+                        <div className="expand-button-container">
+                            {openFilter === "features" ? " - " : " + "}
+                        </div>
                     </div>
                 </div>
                 <div

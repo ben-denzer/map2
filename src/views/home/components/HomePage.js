@@ -12,6 +12,7 @@ class HomePage extends Component {
         super(props);
         this.changeMobileView = this.changeMobileView.bind(this);
     }
+
     componentDidMount() {
         this.getStateFromUrl();
         // Close the filter options if they click anywhere else on the page
@@ -34,6 +35,7 @@ class HomePage extends Component {
             this.props.history.push(oldPathname);
             return;
         }
+
         const oldHash = this.props.history.location.hash;
         const newHash = oldHash.slice(0, oldHash.lastIndexOf('=') + 1) + newView;
         this.props.history.push(oldPathname + newHash);
@@ -55,6 +57,7 @@ class HomePage extends Component {
                         const stateToFind = rawRegion.slice(0, rawRegion.indexOf('&'));
                         this.props.selectRegion(decodeURI(stateToFind));
                     }
+
                     if (bedroomIndex && parseInt(bedroomIndex, 10) >= 0) {
                         const rawBedrooms = hash.slice(bedroomIndex + 3);
                         const brText = rawBedrooms.slice(0, rawBedrooms.indexOf('&'));
@@ -69,10 +72,13 @@ class HomePage extends Component {
     }
 
     render() {
+        const { activeRegion, activeState, history, sidebarFilterVisibility } = this.props;
         if (this.props.mobile) {
             return (
-                <div id="mobile_container" className={!this.props.history.location.hash && 'first-page'}>
+                <div id="mobile_container" className={!history.location.hash && 'first-page'}>
                     <MobileHeader
+                        activeRegion={activeRegion}
+                        activeState={activeState}
                         changeMobileView={this.changeMobileView}
                     />
                     <MainMobileContainer {...this.props} changeMobileView={this.changeMobileView} />
@@ -93,7 +99,7 @@ class HomePage extends Component {
                 <MapContainer {...this.props} />
                 <div
                     id="sidebar"
-                    className={this.props.sidebarFilterVisibility ? "open" : ""}
+                    className={sidebarFilterVisibility ? "open" : ""}
                 >
                     <SearchResultsContainer {...this.props} />
                     <SidebarFilterContainer {...this.props} />

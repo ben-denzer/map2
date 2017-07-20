@@ -16,16 +16,22 @@ store.dispatch(getRegions());
 
 // Check for mobile
 let resizeTimer;
-const checkForMobile = () => {
-    if (resizeTimer) {
-        clearTimeout(resizeTimer);
-    }
-    resizeTimer = setTimeout(() => {
+const checkForMobile = (noTimer) => {
+    if (noTimer) {
         const mobile = window.innerWidth < 1100;
         store.dispatch({ type: SET_MOBILE, mobile });
-    }, 500);
+    } else {
+        if (resizeTimer) {
+            clearTimeout(resizeTimer);
+        }
+        resizeTimer = setTimeout(() => {
+            const mobile = window.innerWidth < 1100;
+            store.dispatch({ type: SET_MOBILE, mobile });
+        }, 500);
+    }
 };
-checkForMobile();
+
+checkForMobile(true);
 window.addEventListener("resize", checkForMobile);
 
 function App(props) {

@@ -76,21 +76,12 @@ $sidebarTransition: .75s;
         }
     }
 
-    // &.open {
-    //     &#sidebar_filter_container {
-    //         right: 0;
-    //     }
-    //     &#search_results_container {
-    //         right: 320px;
-    //     }
-    // }
-
     &#search_results_container {
         position: absolute;
     }
 
     #search_results_menu {
-        padding: 10px 0;
+        padding: 10px 35px 10px 0;
         font-size: $headerFontSize;
         color: $color2;
         font-weight: bold;
@@ -170,6 +161,9 @@ $sidebarTransition: .75s;
             margin-left: -25px;
             margin-right: 20px;
         }
+        .md-text--theme-secondary {
+            color: $color1;
+        }
     }
 
     .community-preview-container {
@@ -201,7 +195,7 @@ $sidebarTransition: .75s;
         }
 
         .preview-main {
-            padding: 5px;
+            padding: 5px 40px 5px 5px;
             display: flex;
             flex-direction: column;
 
@@ -209,6 +203,7 @@ $sidebarTransition: .75s;
                 font-family: Oswald, sans-serif;
                 font-size: 17px;
                 margin: 0;
+                white-space: normal;
             }
 
             .preview-address {
@@ -218,12 +213,12 @@ $sidebarTransition: .75s;
 
             .preview-info {
                 display: flex;
-                font-size: 14px;
+                font-size: 13px;
 
                 .preview-info-left {
                     display: flex;
                     flex-direction: column;
-                    width: 60%;
+                    width: 55%;
 
                     .preview-bedbath {
                         display: flex;
@@ -237,7 +232,8 @@ $sidebarTransition: .75s;
                 .preview-info-right {
                     display: flex;
                     flex-direction: column;
-                    width: 40%;
+                    width: 44%;
+                    font-size: 13px;
 
                     .specials {
                         font-weight: bold;
@@ -251,16 +247,22 @@ $sidebarTransition: .75s;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px;
+            padding: 10px 30px 10px 10px;
             color: transparentize(#fff, .1);
+            font-size: 13px;
 
             a {
                 color: #fff;
                 text-decoration: none;
+                padding-right: 30px;
 
                 &:hover {
                     color: transparentize(#fff, .3);
                 }
+            }
+
+            &:nth-child(1) {
+                width: 55%;
             }
         }
     }
@@ -312,14 +314,34 @@ $sidebarTransition: .75s;
                 display: flex;
                 justify-content: space-between;
 
-                .multi-count {
-                    text-align: center;
-                    height: 20px;
-                    width: 20px;
-                    border-radius: 3px;
-                    background: $color2;
-                    color: white;
-                    margin-right: 5px;
+                .filter-title-left {
+                    display: flex;
+                    align-items: center;
+                }
+
+                .filter-title-right {
+                    display: flex;
+                    width: 70px;
+                    justify-content: flex-end;
+                    align-items: center;
+
+                    .expand-button-container {
+                        font-weight: bold;
+                        color: $color2;
+                        margin-left: 15px;
+                        font-size: 20px;
+                        width: 10px;
+                    }
+
+                    .multi-count {
+                        text-align: center;
+                        height: 20px;
+                        width: 20px;
+                        border-radius: 3px;
+                        background: $color2;
+                        color: white;
+                        margin-right: 5px;
+                    }
                 }
             }
 
@@ -354,7 +376,7 @@ $sidebarTransition: .75s;
                         margin-right: 10px;
 
                         &.checked {
-                            background-color: green;
+                            background-color: $color2;
                         }
                     }
                 }

@@ -30,17 +30,13 @@ export default function sidebarFiterReducer(state = initialState, action) {
                         ...state[action.filter].slice(0, state[action.filter].indexOf(action.li)),
                         ...state[action.filter].slice(state[action.filter].indexOf(action.li) + 1),
                     ],
-                    sidebarMultiSelectStatus: "",
                 },
             );
         }
         return Object.assign(
             {},
             state,
-            {
-                [action.filter]: [...state[action.filter], action.li],
-                sidebarMultiSelectStatus: "",
-            },
+            { [action.filter]: [...state[action.filter], action.li] },
         );
     case "RESET_SIDEBAR_FILTERS":
         return initialState;
