@@ -96,7 +96,7 @@ function SidebarFilter(props) {
                 Discover what Solomon has to offer. Whether you're looking for an apartment close to work or a pet-friendly home with great amenities, our wide range of communities and locations fit any lifestyle. Schedule a tour with us today; we'd love to welcome you home!
             </div>
 
-            {/*<div className="text-box" id="location_filter">
+            <div className="text-box" id="location_filter">
                 <input
                     type="text"
                     placeholder="Location (City, State)"
@@ -116,7 +116,7 @@ function SidebarFilter(props) {
                     step={10}
                     onChange={(val) => handleDistanceChange(val)}
                 />
-            </div>*/}
+            </div>
 
             <div className="multi-filter" id="amenities_filter" hidden={!amenities.length}>
                 <div
