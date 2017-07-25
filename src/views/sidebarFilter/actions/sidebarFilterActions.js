@@ -9,7 +9,6 @@ import {
 } from "../../actionTypes";
 
 const getByRadius = address => (dispatch, getState) => {
-    console.log('called');
     const address1 = getState().sidebarFilter.locationText1.trim();
     const address2 = getState().sidebarFilter.locationText2.trim();
     console.log(`${address1}, ${address2}`); // eslint-disable-line

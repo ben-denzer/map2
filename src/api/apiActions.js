@@ -27,7 +27,6 @@ const getAddressCoords = (address) => {
         method: 'POST',
         address: '123 main st, detroit, MI',
     };
-    // console.log(`${apiUrl.domainUrl}${apiUrl.getAddressCoordsUrl}`);
     fetch(`${apiUrl.devUrl}${apiUrl.getAddressCoordsUrl}`, options)
     // fetch(`${apiUrl.geoFullUrl}`)
         .then(data => data.json())
