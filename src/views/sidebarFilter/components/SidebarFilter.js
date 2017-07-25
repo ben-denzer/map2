@@ -16,9 +16,12 @@ function SidebarFilter(props) {
         distanceVal,
         dogsSelected,
         featuresSelected,
-        location,
+        locationText1,
+        locationText2,
+        getByRadius,
         handleCheckbox,
-        handleLocationChange,
+        handleAddressChange,
+        handleCityStateChange,
         handleDistanceChange,
         handleMultiSelect,
         handleSliderChange,
@@ -96,12 +99,21 @@ function SidebarFilter(props) {
                 Discover what Solomon has to offer. Whether you're looking for an apartment close to work or a pet-friendly home with great amenities, our wide range of communities and locations fit any lifestyle. Schedule a tour with us today; we'd love to welcome you home!
             </div>
 
-            <div className="text-box" id="location_filter">
+            <div className="text-box" id="location_filter_1">
+                <input
+                    type="text"
+                    placeholder="Address"
+                    value={locationText1}
+                    onChange={handleAddressChange}
+                />
+            </div>
+
+            <div className="text-box" id="location_filter_2">
                 <input
                     type="text"
                     placeholder="Location (City, State)"
-                    value={location}
-                    onChange={(e) => handleLocationChange}
+                    value={locationText2}
+                    onChange={handleCityStateChange}
                 />
             </div>
 
@@ -116,6 +128,10 @@ function SidebarFilter(props) {
                     step={10}
                     onChange={(val) => handleDistanceChange(val)}
                 />
+            </div>
+
+            <div id="distance_search_button" onClick={() => {console.log('clicked'); getByRadius()}}>
+                Go
             </div>
 
             <div className="multi-filter" id="amenities_filter" hidden={!amenities.length}>
@@ -220,12 +236,15 @@ SidebarFilter.propTypes = {
     catsSelected: PropTypes.bool.isRequired,
     dogsSelected: PropTypes.bool.isRequired,
     featuresSelected: PropTypes.array.isRequired,
+    getByRadius: PropTypes.func.isRequired,
     handleCheckbox: PropTypes.func.isRequired,
     handleDistanceChange: PropTypes.func.isRequired,
-    handleLocationChange: PropTypes.func.isRequired,
+    handleAddressChange: PropTypes.func.isRequired,
+    handleCityStateChange: PropTypes.func.isRequired,
     handleMultiSelect: PropTypes.func.isRequired,
     handleSliderChange: PropTypes.func.isRequired,
-    location: PropTypes.string.isRequired,
+    locationText1: PropTypes.string.isRequired,
+    locationText2: PropTypes.string.isRequired,
     sidebarFilterVisibility: PropTypes.bool.isRequired,
     sidebarMultiSelectStatus: PropTypes.string.isRequired,
     toggleMultiSelect: PropTypes.func.isRequired,

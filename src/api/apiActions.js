@@ -1,4 +1,4 @@
-// import apiUrl from "./apiUrl";
+import apiUrl from "./apiUrl";
 import parseRentPrices from "../utils/parseRentPrices";
 import {
     ASYNC_START,
@@ -22,25 +22,18 @@ const getCommunitiesInState = region => (dispatch) => {
         }); // .catch(error => dispatch({ type: API_ERROR, error }));
 };
 
-// const getStateData = () => (dispatch) => {
-//     dispatch({ type: ASYNC_START });
-//     const { apiBaseUrl, corpId, domainUrl } = apiUrl;
-//     fetch(`${domainUrl}${apiBaseUrl}states/${corpId}/`)
-//         .then(data => data.json())
-//         .then((stateData) => {
-//             dispatch({ type: STATES_SUCCESS, stateData });
-//         }); // .catch(error => dispatch({ type: API_ERROR, error }));
-// };
-
-// const getRegions = () => (dispatch) => {
-//     dispatch({ type: ASYNC_START });
-//     const regionUrl = "http://www.solomon.aptdemo.com.apartmentdemo.com:1024/api/v5/corporation/communities/region/all/";
-//     fetch(regionUrl)
-//         .then(data => data.json())
-//         .then((stateData) => {
-//             dispatch({ type: STATES_SUCCESS, stateData });
-//         }); // .catch(error => dispatch({ type: API_ERROR, error }));
-// };
+const getAddressCoords = (address) => {
+    const options = {
+        method: 'POST',
+        address: '123 main st, detroit, MI',
+    };
+    // console.log(`${apiUrl.domainUrl}${apiUrl.getAddressCoordsUrl}`);
+    fetch(`${apiUrl.devUrl}${apiUrl.getAddressCoordsUrl}`, options)
+    // fetch(`${apiUrl.geoFullUrl}`)
+        .then(data => data.json())
+        .then(coords => console.log(coords))
+        .catch(err => console.log(`error - ${err}`))
+}
 
 const getRegions = () => (dispatch) => {
     dispatch({ type: ASYNC_START });
@@ -52,4 +45,4 @@ const getRegions = () => (dispatch) => {
         }); // .catch(error => dispatch({ type: API_ERROR, error }));
 };
 
-export { getCommunitiesInState, getRegions };
+export { getAddressCoords, getCommunitiesInState, getRegions };

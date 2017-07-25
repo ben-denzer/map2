@@ -1,8 +1,10 @@
 import { connect } from "react-redux";
 import {
+    getByRadius,
     handleCheckbox,
     handleDistanceChange,
-    handleLocationChange,
+    handleAddressChange,
+    handleCityStateChange,
     handleMultiSelect,
     handleSliderChange,
     toggleMultiSelect,
@@ -15,16 +17,19 @@ const mapStateToProps = state => ({
     distanceVal: state.sidebarFilter.distanceVal,
     dogsSelected: state.sidebarFilter.dogsSelected,
     featuresSelected: state.sidebarFilter.featuresSelected,
-    location: state.sidebarFilter.location,
+    locationText1: state.sidebarFilter.locationText1,
+    locationText2: state.sidebarFilter.locationText2,
     priceFilter: state.sidebarFilter.priceFilter,
     sidebarFilterVisibility: state.home.sidebarFilterVisibility,
     sidebarMultiSelectStatus: state.sidebarFilter.sidebarMultiSelectStatus,
 });
 
 const mapDispatchToProps = dispatch => ({
+    getByRadius: address => dispatch(getByRadius(address)),
     handleCheckbox: filter => dispatch(handleCheckbox(filter)),
     handleDistanceChange: val => dispatch(handleDistanceChange(val)),
-    handleLocationChange: e => dispatch(handleLocationChange(e)),
+    handleAddressChange: e => dispatch(handleAddressChange(e)),
+    handleCityStateChange: e => dispatch(handleCityStateChange(e)),
     handleMultiSelect: e => dispatch(handleMultiSelect(e)),
     handleSliderChange: (id, valArray) => dispatch(handleSliderChange(id, valArray)),
     toggleMultiSelect: e => dispatch(toggleMultiSelect(e)),
