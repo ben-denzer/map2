@@ -18,6 +18,7 @@ function Filterbar(props) {
         history,
         resetFilters,
         selectRegion,
+        selectState,
         stateOptions,
         toggleFilterOptions,
         toggleSidebarFilter,
@@ -32,6 +33,7 @@ function Filterbar(props) {
                     handleFilter={handleFilter}
                     history={history}
                     selectRegion={selectRegion}
+                    selectState={selectState}
                     stateOptions={stateOptions}
                     toggleFilterOptions={toggleFilterOptions}
                 />
@@ -87,6 +89,7 @@ Filterbar.propTypes = {
     history: PropTypes.object.isRequired,
     resetFilters: PropTypes.func.isRequired,
     selectRegion: PropTypes.func.isRequired,
+    selectState: PropTypes.func.isRequired,
     stateOptions: PropTypes.array.isRequired,
     toggleFilterOptions: PropTypes.func.isRequired,
     toggleSidebarFilter: PropTypes.func.isRequired,

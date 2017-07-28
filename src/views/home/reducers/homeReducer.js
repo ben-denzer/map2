@@ -15,7 +15,7 @@ const initialState = {
     defaultMapLocation: { lat: 39, lng: -94 },
     loading: 0,
     mobile: true,
-    sidebarFilterVisibility: true,  // set back to false
+    sidebarFilterVisibility: false,
     stateOptions: [],
 };
 
@@ -41,6 +41,9 @@ export default function homeReducer(state = initialState, action) {
                 loading: state.loading - 1,
             },
         );
+
+    case "CHANGE_STATE":
+        return state;
 
     case "HANDLE_COUNTER":
         if (action.filterAction === "increment") {

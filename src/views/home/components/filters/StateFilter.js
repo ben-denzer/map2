@@ -7,25 +7,36 @@ function StateFilter(props) {
         activeRegion,
         history,
         selectRegion,
+        selectState,
         stateOptions,
         toggleFilterOptions,
     } = props;
 
-    const options = stateOptions.map(a => (
-        <div
-            key={a}
-            className="filterbar-li"
-            data-state={a.state}
-            onClick={() => {
-                selectRegion(a);
-                history.push(`${history.location.pathname}#region=${encodeURI(a)}&view=list`);
-            }}
-        >
-            {a}
-        </div>
-    ));
+    const options = stateOptions.map(a => {
+        const state_region = window.stateOrRegion === 'state' ? a.state : a;
+        const display = window.stateOrRegion === 'state' ? a.state_display : a;
 
-    let filterTitle = "Choose A Region";
+        return (
+            <div
+                key={a.state}
+                className="filterbar-li"
+                data-state={state_region}
+                onClick={() => {
+                    if (window.stateOrRegion === 'state') {
+                        selectState(state_region);
+                        history.push(`${history.location.pathname}#state=${encodeURI(state_region)}&view=list`);
+                    } else {
+                        selectRegion(state_region);
+                        history.push(`${history.location.pathname}#region=${encodeURI(state_region)}&view=list`);
+                    }
+                }}
+            >
+                {display}
+            </div>
+        );
+    });
+
+    let filterTitle = window.stateOrRegion === "state" ? "Choose A State" : "Choose A Region";
     if (activeRegion && activeRegion !== "all") {
         filterTitle = decodeURI(activeRegion);
     }
@@ -59,6 +70,7 @@ StateFilter.propTypes = {
     activeRegion: PropTypes.string.isRequired,
     history: PropTypes.object.isRequired,
     selectRegion: PropTypes.func.isRequired,
+    selectState: PropTypes.func.isRequired,
     stateOptions: PropTypes.array.isRequired,
     toggleFilterOptions: PropTypes.func.isRequired,
 };

@@ -8,13 +8,15 @@ import {
     TOGGLE_MULTI_SELECT,
 } from "../../actionTypes";
 
+import { getCoords } from "../../../api/apiActions";
+
 const getByRadius = address => (dispatch, getState) => {
     const radius = getState().sidebarFilter.distanceVal[1];
     const address1 = getState().sidebarFilter.locationText1.trim();
     const address2 = getState().sidebarFilter.locationText2.trim();
     const fullAddress = `${address1}, ${address2}`; // eslint-disable-line
-    if (window.getByRadius) {
-        window.getByRadius(fullAddress, radius, (err, data) => {
+    if (getCoords) {
+        getCoords(fullAddress, radius, (err, data) => {
             if (err) {
                 return console.log(err);
             }
