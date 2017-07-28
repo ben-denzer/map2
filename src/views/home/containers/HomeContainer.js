@@ -35,9 +35,11 @@ const mapStateToProps = (state) => {
     const {
         amenitiesSelected,
         catsSelected,
+        communityArray,
         dogsSelected,
         featuresSelected,
         priceFilter,
+        radiusChanged,
     } = state.sidebarFilter;
 
     const {
@@ -56,6 +58,7 @@ const mapStateToProps = (state) => {
             bedrooms: activeBedrooms,
             cats: catsSelected,
             city: activeCity,
+            communityArray,
             dogs: dogsSelected,
             features: featuresSelected,
             priceFilter,
@@ -81,6 +84,7 @@ const mapStateToProps = (state) => {
         highlightedCommunity,
         isLoading,
         mobile,
+        radiusChanged,
         sidebarFilterVisibility,
         stateOptions,
     };

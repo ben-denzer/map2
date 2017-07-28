@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import BathroomsFilter from "./filters/BathroomsFilter";
 import BedroomsFilter from "./filters/BedroomsFilter";
 import CityFilter from "./filters/CityFilter";
 import StateFilter from "./filters/StateFilter";
@@ -9,7 +8,6 @@ import resetArrow from "../../../img/reset_arrow.png";
 
 function Filterbar(props) {
     const {
-        // activeBathrooms,
         activeBedrooms,
         activeCity,
         activeFilter,
@@ -54,14 +52,6 @@ function Filterbar(props) {
                     toggleFilterOptions={toggleFilterOptions}
                 />
             </div>
-            {/*<BathroomsFilter
-                activeBathrooms={activeBathrooms}
-                activeRegion={activeRegion}
-                allData={allData}
-                handleCounter={handleCounter}
-                handleFilter={handleFilter}
-                toggleFilterOptions={toggleFilterOptions}
-            />*/}
             <div id="filterbar_right">
                 <img
                     id="reset_arrow"
@@ -87,7 +77,6 @@ function Filterbar(props) {
 }
 
 Filterbar.propTypes = {
-    // activeBathrooms: PropTypes.string.isRequired,
     activeBedrooms: PropTypes.string.isRequired,
     activeCity: PropTypes.string.isRequired,
     activeFilter: PropTypes.string.isRequired,

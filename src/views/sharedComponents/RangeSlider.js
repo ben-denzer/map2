@@ -4,7 +4,7 @@ import noUiSlider from "nouislider";
 
 class RangeSlider extends Component {
     componentDidMount() {
-        const { handleSliderChange, id, max, min, step } = this.props;
+        const { handleSliderChange, id, margin, max, min, step } = this.props;
 
         const slider = document.getElementById(this.props.id);
 
@@ -17,7 +17,7 @@ class RangeSlider extends Component {
                     min,
                     max,
                 },
-                margin: step,
+                margin,
                 tooltips: [true, true],
                 format: {
                     to: val => parseInt(val.toString(), 10),

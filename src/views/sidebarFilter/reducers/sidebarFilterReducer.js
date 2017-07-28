@@ -1,12 +1,14 @@
 const initialState = {
     amenitiesSelected: [],
     catsSelected: false,
-    distanceVal: 40,
+    communityArray: null,
+    distanceVal: [10, 40],
     dogsSelected: false,
     featuresSelected: [],
     locationText1: "",
     locationText2: "",
     priceFilter: [0, 0],
+    radiusChanged: false,
     sidebarMultiSelectStatus: "",
 };
 
@@ -14,10 +16,16 @@ export default function sidebarFiterReducer(state = initialState, action) {
     switch (action.type) {
     case "CLEAR_FILTERS":
         return initialState;
+    case "DISTANCE_FILTER_RESULTS":
+        return Object.assign(
+            {},
+            state,
+            {
+                communityArray: action.communityArray,
+                radiusChanged: action.radiusChanged
+            });
     case "HANDLE_CHECKBOX":
         return Object.assign({}, state, { [action.filter]: !state[action.filter] });
-    case "HANDLE_DISTANCE_CHANGE":
-        return Object.assign({}, state, { distanceVal: action.val });
     case "HANDLE_ADDRESS_CHANGE":
         return Object.assign({}, state, { locationText1: action.location });
     case "HANDLE_CITY_STATE_CHANGE":
@@ -45,6 +53,7 @@ export default function sidebarFiterReducer(state = initialState, action) {
         return initialState;
 
     case "SLIDER_CHANGE":
+        console.log(action.id);
         return Object.assign(
             {},
             state,

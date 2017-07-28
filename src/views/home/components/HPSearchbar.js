@@ -85,7 +85,7 @@ class HPSearchbar extends Component {
                         id="city-selector"
                         disabled={communities.length === 0}
                     >
-                        {!communities.length && <option defaultValue>Select a Region First</option>}
+                        {!communities.length && <option defaultValue>Select Bedrooms</option>}
                         {communities.length && brOptionsList}
                     </select>
                 </div>
@@ -94,9 +94,8 @@ class HPSearchbar extends Component {
                     type="submit"
                     id="quick-search"
                     className="btn btn-default"
-                    disabled={communities.length === 0}
                 >
-                    {!communities.length ? 'Select a Region' : 'Go'}
+                    Go
                 </button>
             </form>
         );

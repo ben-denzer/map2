@@ -3,7 +3,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import Checkbox from "react-md/lib/SelectionControls/Checkbox";
 import Slider from 'react-md/lib/Sliders';
-// import SelectField from 'react-md/lib/SelectFields';
 import RangeSlider from "../../sharedComponents/RangeSlider";
 import catIcon from "../../../img/cat.png";
 import dogIcon from "../../../img/dog.png";
@@ -22,7 +21,6 @@ function SidebarFilter(props) {
         handleCheckbox,
         handleAddressChange,
         handleCityStateChange,
-        handleDistanceChange,
         handleMultiSelect,
         handleSliderChange,
         sidebarFilterVisibility,
@@ -99,7 +97,7 @@ function SidebarFilter(props) {
                 Discover what Solomon has to offer. Whether you're looking for an apartment close to work or a pet-friendly home with great amenities, our wide range of communities and locations fit any lifestyle. Schedule a tour with us today; we'd love to welcome you home!
             </div>
 
-            <div className="text-box" id="location_filter_1">
+            <div className="text-box location-text" id="location_filter_1">
                 <input
                     type="text"
                     placeholder="Address"
@@ -108,7 +106,7 @@ function SidebarFilter(props) {
                 />
             </div>
 
-            <div className="text-box" id="location_filter_2">
+            <div className="text-box location-text" id="location_filter_2">
                 <input
                     type="text"
                     placeholder="Location (City, State)"
@@ -118,6 +116,18 @@ function SidebarFilter(props) {
             </div>
 
             <div id="distance_slider_container">
+                <RangeSlider
+                    label="Search Radius (Miles)"
+                    handleSliderChange={handleSliderChange}
+                    id="distanceFilter"
+                    margin={0}
+                    max={40}
+                    min={10}
+                    step={10}
+                />
+            </div>
+
+            {/*<div id="distance_slider_container">
                 <Slider
                     defaultValue={distanceVal}
                     discrete
@@ -128,10 +138,12 @@ function SidebarFilter(props) {
                     step={10}
                     onChange={(val) => handleDistanceChange(val)}
                 />
-            </div>
+            </div>*/}
 
-            <div id="distance_search_button" onClick={() => {console.log('clicked'); getByRadius()}}>
-                Go
+            <div id="distance_button_container">
+                <div id="distance_search_button" onClick={getByRadius}>
+                    Go
+                </div>
             </div>
 
             <div className="multi-filter" id="amenities_filter" hidden={!amenities.length}>
@@ -198,6 +210,7 @@ function SidebarFilter(props) {
                     handleSliderChange={handleSliderChange}
                     id="priceFilter"
                     max={maxPrice}
+                    margin={100}
                     min={minPrice}
                     step={100}
                 />
@@ -238,7 +251,6 @@ SidebarFilter.propTypes = {
     featuresSelected: PropTypes.array.isRequired,
     getByRadius: PropTypes.func.isRequired,
     handleCheckbox: PropTypes.func.isRequired,
-    handleDistanceChange: PropTypes.func.isRequired,
     handleAddressChange: PropTypes.func.isRequired,
     handleCityStateChange: PropTypes.func.isRequired,
     handleMultiSelect: PropTypes.func.isRequired,

@@ -2,7 +2,6 @@ import { connect } from "react-redux";
 import {
     getByRadius,
     handleCheckbox,
-    handleDistanceChange,
     handleAddressChange,
     handleCityStateChange,
     handleMultiSelect,
@@ -27,7 +26,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     getByRadius: address => dispatch(getByRadius(address)),
     handleCheckbox: filter => dispatch(handleCheckbox(filter)),
-    handleDistanceChange: val => dispatch(handleDistanceChange(val)),
     handleAddressChange: e => dispatch(handleAddressChange(e)),
     handleCityStateChange: e => dispatch(handleCityStateChange(e)),
     handleMultiSelect: e => dispatch(handleMultiSelect(e)),

@@ -1,25 +1,38 @@
 import {
-    SLIDER_CHANGE,
+    DISTANCE_FILTER_RESULTS,
     HANDLE_CHECKBOX,
-    HANDLE_DISTANCE_CHANGE,
     HANDLE_ADDRESS_CHANGE,
     HANDLE_CITY_STATE_CHANGE,
     HANDLE_MULTI_SELECT,
+    SLIDER_CHANGE,
     TOGGLE_MULTI_SELECT,
 } from "../../actionTypes";
 
 const getByRadius = address => (dispatch, getState) => {
+    const radius = getState().sidebarFilter.distanceVal[1];
     const address1 = getState().sidebarFilter.locationText1.trim();
     const address2 = getState().sidebarFilter.locationText2.trim();
-    console.log(`${address1}, ${address2}`); // eslint-disable-line
-    // window.getByRadius()
-}
+    const fullAddress = `${address1}, ${address2}`; // eslint-disable-line
+    if (window.getByRadius) {
+        window.getByRadius(fullAddress, radius, (err, data) => {
+            if (err) {
+                return console.log(err);
+            }
+            const communityArray = data.map(a => a.community);
+            const radiusChangedArray = data.filter(a => a.radius_changed && a);
+            const radiusChanged = radiusChangedArray.length ? Math.max(...radiusChangedArray) : false;
+            console.log(communityArray, radiusChanged);
+            dispatch({ type: DISTANCE_FILTER_RESULTS, communityArray, radiusChanged });
+        });
+    } else {
+        // MOCK RESPONSE
+        const communityArray = [5944, 4371];
+        const radiusChanged = 40;
+        setTimeout(() => dispatch({ type: DISTANCE_FILTER_RESULTS, communityArray, radiusChanged }), 10);
+    }
+};
 
 const handleCheckbox = filter => ({ type: HANDLE_CHECKBOX, filter });
-
-const handleDistanceChange = val => {
-    return { type: HANDLE_DISTANCE_CHANGE, val }
-};
 
 const handleAddressChange = (e) => ({ type: HANDLE_ADDRESS_CHANGE, location: e.target.value });
 
@@ -46,7 +59,6 @@ const toggleMultiSelect = e => (dispatch, getState) => {
 export {
     getByRadius,
     handleCheckbox,
-    handleDistanceChange,
     handleAddressChange,
     handleCityStateChange,
     handleMultiSelect,
