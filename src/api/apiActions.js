@@ -8,9 +8,7 @@ import {
     SELECT_REGION,
     STATES_SUCCESS,
 } from "../views/actionTypes";
-const corpId = window.corpId || '510-545-580-581-582-583-584-585';
-
-console.log('env', process.env.NODE_ENV);
+const corpId = window.corpId || '774';
 
 const getCommunitiesInState = region => (dispatch, getState) => {
     if (getState().home.allData.length && window.stateOrRegion === 'state') {
@@ -22,7 +20,6 @@ const getCommunitiesInState = region => (dispatch, getState) => {
     fetch(`${apiUrl.domainUrl}api/v5/corporation/communities/region/${region}/`)
         .then(res => res.json())
         .then((rawCommunities) => {
-            console.log('rawCommunities', rawCommunities);
             const allCommunityData = rawCommunities.filter(a => (
                 a.is_visible && parseRentPrices(a)
             ));
@@ -51,7 +48,6 @@ const getStates = () => (dispatch) => {
     fetch(`${apiUrl.domainUrl}api/v3/corporation/communities/ratings/states/${corpId}/`)
         .then(data => data.json())
         .then(stateData => {
-            console.log(stateData);
             // if (window.stateOrRegion === 'state') {
                 dispatch({ type: STATES_SUCCESS, stateData });
             // }
@@ -66,7 +62,6 @@ const getRegions = () => (dispatch) => {
     fetch(regionUrl)
         .then(data => data.json())
         .then((stateData) => {
-            console.log(stateData);
             // if (!window.stateOrRegion === 'state') {
                 dispatch({ type: STATES_SUCCESS, stateData });
             // }
@@ -96,7 +91,6 @@ const getCommunitiesByDistance = (data, state, radius, cb) => {
     fetch(url)
         .then(data => data.json())
         .then(json => {
-            console.log(json);
             cb(null, json.map(a => ({ community: a.community, radiusChanged: a.radius_changed })));
         })
         .catch(err => console.log(err));

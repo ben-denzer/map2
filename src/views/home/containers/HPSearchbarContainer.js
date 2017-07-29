@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
         active,
         activeFilter,
         activeRegion,
+        activeState,
         allData,
         stateOptions,
     } = state.home;

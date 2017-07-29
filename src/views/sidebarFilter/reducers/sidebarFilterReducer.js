@@ -53,7 +53,6 @@ export default function sidebarFiterReducer(state = initialState, action) {
         return initialState;
 
     case "SLIDER_CHANGE":
-        console.log(action.id);
         return Object.assign(
             {},
             state,

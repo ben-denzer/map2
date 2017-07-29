@@ -2,15 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function BedroomsFilter(props) {
-    const { activeBedrooms, activeRegion, handleCounter } = props;
-
-    if (!activeRegion) {
-        return (
-            <div id="bedrooms_filter" className="filterbar-select select-disabled">
-                <div className="filterbar-title">Bedrooms</div>
-            </div>
-        );
-    }
+    const { activeBedrooms, handleCounter } = props;
 
     return (
         <div id="bedrooms_filter" className="filterbar-select filterbar-with-buttons">

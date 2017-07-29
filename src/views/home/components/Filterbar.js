@@ -12,7 +12,9 @@ function Filterbar(props) {
         activeCity,
         activeFilter,
         activeRegion,
+        activeState,
         allData,
+        filteredData,
         handleCounter,
         handleFilter,
         history,
@@ -30,6 +32,7 @@ function Filterbar(props) {
                 <StateFilter
                     activeFilter={activeFilter}
                     activeRegion={activeRegion}
+                    activeState={activeState}
                     handleFilter={handleFilter}
                     history={history}
                     selectRegion={selectRegion}
@@ -42,7 +45,7 @@ function Filterbar(props) {
                     activeFilter={activeFilter}
                     activeRegion={activeRegion}
                     handleFilter={handleFilter}
-                    allData={allData}
+                    filteredData={filteredData}
                     toggleFilterOptions={toggleFilterOptions}
                 />
                 <BedroomsFilter
@@ -62,16 +65,16 @@ function Filterbar(props) {
                     alt="Reset Filters"
                     onClick={() => {
                         selectRegion('all');
+                        selectState('');
                         history.push(`${history.location.pathname}#region=all&view=list`);
                         resetFilters();
                     }}
                 />
                 <img
                     id="sliders_thumb"
-                    className={!activeRegion && "disabled"}
                     src={slidersThumb}
                     alt="More Filters"
-                    onClick={activeRegion && toggleSidebarFilter}
+                    onClick={toggleSidebarFilter}
                 />
             </div>
         </div>
@@ -83,7 +86,9 @@ Filterbar.propTypes = {
     activeCity: PropTypes.string.isRequired,
     activeFilter: PropTypes.string.isRequired,
     activeRegion: PropTypes.string.isRequired,
+    activeState: PropTypes.string.isRequired,
     allData: PropTypes.array.isRequired,
+    filteredData: PropTypes.array.isRequired,
     handleCounter: PropTypes.func.isRequired,
     handleFilter: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,

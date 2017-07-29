@@ -42,12 +42,10 @@ class HomePage extends Component {
     }
 
     getStateFromUrl() {
-        console.log(this.props.activeRegion);
         if (!this.props.activeRegion) {
             const hash = this.props.history.location.hash;
             if (hash) {
                 if (/state=/.test(hash)) {
-                    console.log('hit in test', hash.slice(7, 9));
                     const stateInUrl = hash.slice(7, 9);
                     this.props.selectState(stateInUrl);
                     this.props.selectRegion('all');

@@ -62,9 +62,15 @@ class HPSearchbar extends Component {
         const brOptionsList = this.sortAndMapBedrooms(communities);
 
         const regionOptions = stateOptions.map(a => {
-            return (
-                <option key={a} value={a}>{a}</option>
-            );
+            if (window.stateOrRegion === "state") {
+                return (
+                    <option key={a.state} value={a.state}>{a.state_display}</option>
+                )
+            } else {
+                return (
+                    <option key={a} value={a}>{a}</option>
+                );
+            }
         });
 
         return (
@@ -76,7 +82,7 @@ class HPSearchbar extends Component {
                         data-placeholder="Select a state"
                         onChange={this.getCommunities}
                     >
-                        <option defaultValue>Select a Region</option>
+                        <option defaultValue>Select a {window.stateOrRegion === "state" ? "State" : "Region"}</option>
                         {regionOptions}
                     </select>
                 </div>

@@ -6,6 +6,7 @@ function SearchResultsMenu(props) {
     const {
         activeSort,
         activeRegion,
+        activeState,
         filteredData,
         handleResultsSort,
         // mobile,
@@ -26,10 +27,17 @@ function SearchResultsMenu(props) {
     //     return false;
     // })[0];
 
+    let displayRegion = "Our Communities";
+    // if (activeRegion && activeRegion !== 'all') {
+    //     displayRegion = decodeURI(activeRegion);
+    // } else if (activeState) {
+    //     dispatchEvent = activeState;
+    // }
+
     return (
         <div id="search_results_menu">
             <div id="search_menu_toggle" />
-            <div id="search_menu_title">{activeRegion !== 'all' && decodeURI(activeRegion)}</div>
+            <div id="search_menu_title">{displayRegion}</div>
             <SearchMenuFilter
                 activeSort={activeSort}
                 handleResultsSort={handleResultsSort}
@@ -43,6 +51,7 @@ function SearchResultsMenu(props) {
 SearchResultsMenu.propTypes = {
     activeSort: PropTypes.string.isRequired,
     activeRegion: PropTypes.string.isRequired,
+    activeState: PropTypes.string.isRequired,
     filteredData: PropTypes.array.isRequired,
     handleResultsSort: PropTypes.func.isRequired,
     // mobile: PropTypes.bool.isRequired,

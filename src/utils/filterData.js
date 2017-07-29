@@ -13,7 +13,6 @@ function filterData(allData, filters) {
 
     if (filters.communityArray && filters.communityArray.length) {
         tempData = tempData.filter(a => {
-            console.log(a, filters.communityArray, filters.communityArray.indexOf(a.id));
             return filters.communityArray.indexOf(a.community) !== -1 && a;
         });
     }

@@ -6,15 +6,14 @@ function CityFilter(props) {
     const {
         activeCity,
         activeFilter,
-        activeRegion,
-        allData,
+        filteredData,
         handleFilter,
         toggleFilterOptions,
     } = props;
 
     const filterTitle = activeCity || "City";
 
-    const options = findAllCities(allData).map(a => (
+    const options = findAllCities(filteredData).map(a => (
         <div
             key={a}
             className="filterbar-li"
@@ -28,15 +27,6 @@ function CityFilter(props) {
             {a}
         </div>
     ));
-
-    // Early return if no state is selected
-    if (!activeRegion) {
-        return (
-            <div id="city_filter" className="filterbar-select select-disabled">
-                <div className="filterbar-title">Choose a State First</div>
-            </div>
-        );
-    }
 
     return (
         <div
@@ -59,10 +49,8 @@ function CityFilter(props) {
 }
 
 CityFilter.propTypes = {
-    allData: PropTypes.array.isRequired,
     activeCity: PropTypes.string.isRequired,
     activeFilter: PropTypes.string.isRequired,
-    activeRegion: PropTypes.string.isRequired,
     handleFilter: PropTypes.func.isRequired,
     toggleFilterOptions: PropTypes.func.isRequired,
 };

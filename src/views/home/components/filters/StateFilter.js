@@ -5,6 +5,7 @@ function StateFilter(props) {
     const {
         activeFilter,
         activeRegion,
+        activeState,
         history,
         selectRegion,
         selectState,
@@ -39,6 +40,8 @@ function StateFilter(props) {
     let filterTitle = window.stateOrRegion === "state" ? "Choose A State" : "Choose A Region";
     if (activeRegion && activeRegion !== "all") {
         filterTitle = decodeURI(activeRegion);
+    } else if (activeState) {
+        filterTitle = activeState;
     }
 
     // activeRegion && stateOptions.length ?
@@ -68,6 +71,7 @@ function StateFilter(props) {
 StateFilter.propTypes = {
     activeFilter: PropTypes.string.isRequired,
     activeRegion: PropTypes.string.isRequired,
+    activeState: PropTypes.string.isRequired,
     history: PropTypes.object.isRequired,
     selectRegion: PropTypes.func.isRequired,
     selectState: PropTypes.func.isRequired,
