@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import makeSet from "../../../utils/makeSet";
+import apiUrl from '../../../api/apiUrl';
 
 class HPSearchbar extends Component {
     constructor(props) {
@@ -8,20 +9,34 @@ class HPSearchbar extends Component {
         this.state = {
             communities: [],
             options: {
+                state: "",
                 region: "",
                 br: "",
             },
         };
 
         this.getCommunities = this.getCommunities.bind(this);
+        this.setActiveState = this.setActiveState.bind(this);
         this.sortAndMapBedrooms = this.sortAndMapBedrooms.bind(this);
     }
 
+    componentDidMount() {
+        this.getCommunities();
+    }
+
     getCommunities(e) {
-        fetch(`http://www.solomon.aptdemo.com.apartmentdemo.com:1024/api/v5/corporation/communities/region/${encodeURI(e.target.value)}/`)
+        fetch(`${apiUrl.domainUrl}api/v5/corporation/communities/region/all/`)
             .then(res => res.json())
-            .then(communities => this.setState({ communities }))
+            .then(communities => {
+                console.log(communities);
+                this.setState({ communities })
+            })
             .catch(err => console.log(err));
+    }
+
+    setActiveState(e) {
+        const options = Object.assign({}, this.state.options, { state: e.target.value });
+        this.setState({ options });
     }
 
     sortAndMapBedrooms(communities) {
@@ -73,6 +88,21 @@ class HPSearchbar extends Component {
             }
         });
 
+        const rawCityOptions = [];
+        for (let i = 0; i < communities.length; i++) {
+            if (communities[i].state === this.state.options.state) {
+                if (rawCityOptions.indexOf(communities[i].city) === -1) {
+                    rawCityOptions.push(communities[i].city);
+                }
+            }
+        }
+
+        const cityOptions = rawCityOptions.map(a => (
+            <option key={a} value={a}>{a}</option>
+        ));
+
+        console.log('raw', rawCityOptions);
+
         return (
             <form id="quick-search-form" className="form-inline">
                 <div className="form-group">
@@ -80,13 +110,24 @@ class HPSearchbar extends Component {
                         name="state"
                         id="state-selector"
                         data-placeholder="Select a state"
-                        onChange={this.getCommunities}
+                        onChange={this.setActiveState}
                     >
                         <option defaultValue>Select a {window.stateOrRegion === "state" ? "State" : "Region"}</option>
                         {regionOptions}
                     </select>
                 </div>
-                <div className="form-group start_hidden">
+                {window.stateOrRegion === 'state' ?
+                    <div className="form-group start_hidden">
+                        <select
+                            id="city-selector"
+                            disabled={!this.state.options.state}
+                        >
+                            {<option defaultValue>Select City</option>}
+                            {window.stateOrRegion === 'state' ? cityOptions : brOptionsList}
+                        </select>
+                    </div>
+
+                : <div className="form-group start_hidden">
                     <select
                         id="city-selector"
                         disabled={communities.length === 0}
@@ -94,7 +135,7 @@ class HPSearchbar extends Component {
                         {!communities.length && <option defaultValue>Select Bedrooms</option>}
                         {communities.length && brOptionsList}
                     </select>
-                </div>
+                </div>}
                 <div className="form-group start_hidden" />
                 <button
                     type="submit"

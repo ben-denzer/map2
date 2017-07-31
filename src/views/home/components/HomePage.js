@@ -65,6 +65,12 @@ class HomePage extends Component {
                         setTimeout(() => this.props.setBedrooms(brToFind), 2000);
                     }
                 }
+
+                if (/city=/.test(hash)) {
+                    const rawCity = hash.slice(hash.search(/city=/) + 5);
+                    const city = rawCity.slice(0, rawCity.indexOf('&'));
+                    setTimeout(() => this.props.setCity(city), 2000);
+                }
             } else {
                 this.props.selectRegion('all');
             }

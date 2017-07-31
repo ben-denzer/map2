@@ -23,6 +23,8 @@ const mapStateToProps = (state) => {
         activeCity,
     } = active;
 
+    console.log(allData);
+
     return {
         activeBedrooms,
         activeCity,
