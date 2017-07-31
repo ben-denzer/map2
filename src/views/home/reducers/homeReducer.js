@@ -15,7 +15,7 @@ const initialState = {
     defaultMapLocation: { lat: 39, lng: -94 },
     loading: 0,
     mobile: true,
-    sidebarFilterVisibility: true,  // set back to false
+    sidebarFilterVisibility: false,
     stateOptions: [],
 };
 

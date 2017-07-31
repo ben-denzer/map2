@@ -96,36 +96,37 @@ function SidebarFilter(props) {
             <div className="sidebar-text">
                 Discover what Solomon has to offer. Whether you're looking for an apartment close to work or a pet-friendly home with great amenities, our wide range of communities and locations fit any lifestyle. Schedule a tour with us today; we'd love to welcome you home!
             </div>
+            {/*
+                <div className="text-box location-text" id="location_filter_1">
+                    <input
+                        type="text"
+                        placeholder="Address"
+                        value={locationText1}
+                        onChange={handleAddressChange}
+                    />
+                </div>
 
-            <div className="text-box location-text" id="location_filter_1">
-                <input
-                    type="text"
-                    placeholder="Address"
-                    value={locationText1}
-                    onChange={handleAddressChange}
-                />
-            </div>
+                <div className="text-box location-text" id="location_filter_2">
+                    <input
+                        type="text"
+                        placeholder="Location (City, State)"
+                        value={locationText2}
+                        onChange={handleCityStateChange}
+                    />
+                </div>
 
-            <div className="text-box location-text" id="location_filter_2">
-                <input
-                    type="text"
-                    placeholder="Location (City, State)"
-                    value={locationText2}
-                    onChange={handleCityStateChange}
-                />
-            </div>
-
-            <div id="distance_slider_container">
-                <RangeSlider
-                    label="Search Radius (Miles)"
-                    handleSliderChange={handleSliderChange}
-                    id="distanceFilter"
-                    margin={0}
-                    max={40}
-                    min={10}
-                    step={10}
-                />
-            </div>
+                <div id="distance_slider_container">
+                    <RangeSlider
+                        label="Search Radius (Miles)"
+                        handleSliderChange={handleSliderChange}
+                        id="distanceFilter"
+                        margin={0}
+                        max={40}
+                        min={10}
+                        step={10}
+                    />
+                </div>
+            */}
 
             {/*<div id="distance_slider_container">
                 <Slider
@@ -140,11 +141,13 @@ function SidebarFilter(props) {
                 />
             </div>*/}
 
-            <div id="distance_button_container">
-                <div id="distance_search_button" onClick={getByRadius}>
-                    Go
+            {/*
+                <div id="distance_button_container">
+                    <div id="distance_search_button" onClick={getByRadius}>
+                        Go
+                    </div>
                 </div>
-            </div>
+            */}
 
             <div className="multi-filter" id="amenities_filter" hidden={!amenities.length}>
                 <div
