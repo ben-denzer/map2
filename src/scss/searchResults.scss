@@ -380,8 +380,8 @@ $sidebarTransition: .75s;
                 }
 
                 .multi-filter-option {
-                    display: flex;
-                    align-items: center;
+                    display: block;
+                    text-align: left;
                     padding: 8px 5px;
                     box-sizing: border-box;
                     border-bottom: 1px solid transparent;
@@ -396,6 +396,8 @@ $sidebarTransition: .75s;
                         border: 1px solid black;
                         border-radius: 3px;
                         margin-right: 10px;
+                        text-align: left;
+                        display: inline-block;
 
                         &.checked {
                             background-color: $color2;

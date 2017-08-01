@@ -24,7 +24,7 @@ function StateFilter(props) {
                 data-state={state_region}
                 onClick={() => {
                     if (window.stateOrRegion === 'state') {
-                        selectState(state_region);
+                        if (selectState) selectState(state_region);
                         history.push(`${history.location.pathname}#state=${encodeURI(state_region)}&view=list`);
                     } else {
                         selectRegion(state_region);

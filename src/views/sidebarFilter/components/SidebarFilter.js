@@ -94,7 +94,7 @@ function SidebarFilter(props) {
         >
             <div className="sidebar-title">Refine Your Options</div>
             <div className="sidebar-text">
-                Whether you’re looking for an apartment close to work, school or a pet-friendly home, our great amenities and locations will fit any lifestyle. Schedule a tour with us today. We look forward to welcoming you home!
+                {window.searchApp && window.searchApp.sidebarText || "Whether you’re looking for an apartment close to work, school or a pet-friendly home, our great amenities and locations will fit any lifestyle. Schedule a tour with us today. We look forward to welcoming you home!"}
             </div>
 
             <div className="text-box location-text" id="location_filter_1">
@@ -146,16 +146,21 @@ function SidebarFilter(props) {
                 </div>
             </div>
 
-            <div className="multi-filter" id="amenities_filter" hidden={!amenities.length}>
+            <div
+                className="multi-filter"
+                data-filter="amenities"
+                id="amenities_filter"
+                hidden={!amenities.length}
+                onClick={toggleMultiSelect}
+            >
                 <div
                     className="multi-filter-title"
                     data-filter="amenities"
-                    onClick={toggleMultiSelect}
                 >
                     <div className="filter-title-left" data-filter="amenities">
                         Amenities
                     </div>
-                    <div className="filter-title-right">
+                    <div className="filter-title-right" data-filter="amenities">
                         <div
                             className="multi-count"
                             data-filter="amenities"
@@ -163,7 +168,7 @@ function SidebarFilter(props) {
                         >
                             {amenitiesSelected.length}
                         </div>
-                        <div className="expand-button-container">
+                        <div className="expand-button-container" data-filter="amenities">
                             {openFilter === "amenities" ? " - " : " + "}
                         </div>
                     </div>
@@ -175,16 +180,21 @@ function SidebarFilter(props) {
                 </div>
             </div>
 
-            <div className="multi-filter" id="features_filter" hidden={!features.length}>
+            <div
+                className="multi-filter"
+                data-filter="features"
+                onClick={toggleMultiSelect}
+                id="features_filter"
+                hidden={!features.length}
+            >
                 <div
                     className="multi-filter-title"
                     data-filter="features"
-                    onClick={toggleMultiSelect}
                 >
                     <div className="filter-title-left" data-filter="features">
                         Features
                     </div>
-                    <div className="filter-title-right">
+                    <div className="filter-title-right" data-filter="features">
                         <div
                             className="multi-count"
                             data-filter="features"
@@ -192,7 +202,7 @@ function SidebarFilter(props) {
                         >
                             {featuresSelected.length}
                         </div>
-                        <div className="expand-button-container">
+                        <div className="expand-button-container" data-filter="features">
                             {openFilter === "features" ? " - " : " + "}
                         </div>
                     </div>

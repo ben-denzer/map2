@@ -137,7 +137,7 @@ export default function homeReducer(state = initialState, action) {
         );
 
     case "SELECT_STATE":
-        return Object.assign({}, state, { activeState: action.state });
+        return Object.assign({}, state, { active: initialState.active, activeState: action.state });
 
     case "SET_MOBILE":
         return Object.assign({}, state, { mobile: action.mobile });

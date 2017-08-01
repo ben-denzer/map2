@@ -26,6 +26,8 @@ function CommunityPreview(props) {
         state,
     } = allCommunityData;
 
+    console.log(allCommunityData);
+
     return (
         <div
             className={`community-preview-container${highlightedCommunity === id ? " highlighted" : ""}`}
@@ -64,9 +66,12 @@ function CommunityPreview(props) {
                 </div>
             </div>
             <div className="preview-bottom">
-                <div>
-                    <div className="box light" /> <a href={website} target="_blank" rel="noopener noreferrer">View Website</a>
-                </div>
+                {website ?
+                    <div>
+                        <div className="box light" /> <a href={website} target="_blank" rel="noopener noreferrer">View Website</a>
+                    </div>
+                    : <div />
+                }
                 <div>
                     <div className="box light" /> <a href={`tel:${phone}`}>{phone}</a>
                 </div>

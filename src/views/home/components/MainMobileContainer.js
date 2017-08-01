@@ -18,7 +18,8 @@ class MainMobileContainer extends React.Component {
 
         if (!history.location.hash) {
             return (
-                <MobileChooseState
+                <MobileChooseState {...this.props} />
+                /*<MobileChooseState
                     activeFilter={activeFilter}
                     activeRegion={activeRegion}
                     handleFilter={handleFilter}
@@ -26,7 +27,7 @@ class MainMobileContainer extends React.Component {
                     selectRegion={selectRegion}
                     stateOptions={stateOptions}
                     toggleFilterOptions={toggleFilterOptions}
-                />
+                />*/
             );
         }
 

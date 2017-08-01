@@ -56,7 +56,6 @@ const getStates = () => (dispatch) => {
 }
 
 const getRegions = () => (dispatch) => {
-    console.log('start getRegions');
     dispatch({ type: ASYNC_START });
     const regionUrl = `${apiUrl.domainUrl}api/v5/corporation/communities/regions/`;
     fetch(regionUrl)

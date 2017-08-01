@@ -28,7 +28,6 @@ class HPSearchbar extends Component {
         fetch(`${apiUrl.domainUrl}api/v5/corporation/communities/region/all/`)
             .then(res => res.json())
             .then(communities => {
-                console.log(communities);
                 this.setState({ communities })
             })
             .catch(err => console.log(err));
@@ -100,8 +99,6 @@ class HPSearchbar extends Component {
         const cityOptions = rawCityOptions.map(a => (
             <option key={a} value={a}>{a}</option>
         ));
-
-        console.log('raw', rawCityOptions);
 
         return (
             <form id="quick-search-form" className="form-inline">

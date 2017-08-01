@@ -7,6 +7,7 @@ import states from "../../../../utils/usStates";
 function MobileHeader(props) {
     const { activeRegion, activeState, changeMobileView } = props;
 
+    /*
     // Early return (remove hamburger) when on the mobile choose state page
     if (!activeRegion || /all/i.test(activeRegion)) {
         if (!activeState) {
@@ -16,6 +17,10 @@ function MobileHeader(props) {
                 </div>
             );
         }
+    }*/
+
+    if(!/state/.test(props.history.location.hash)) {
+        return <div id="mobile_header" />
     }
 
     const getDisplayRegion = () => {
@@ -35,7 +40,7 @@ function MobileHeader(props) {
                 <div className="hamburger-bar" />
                 <div className="hamburger-bar" />
             </div>
-            <h3 id="mobile_header_title">{displayRegion}</h3>
+            {/*<h3 id="mobile_header_title">{displayRegion}</h3>*/}
         </div>
     );
 }

@@ -18,7 +18,8 @@ function MobileChooseState(props) {
     return (
         <div className="first-page">
             <img id="mobile_logo" src="/gridmedia/img/app-logo.png" alt="Community Name" />
-            <StateFilter
+            <StateFilter {...props} />
+            {/*<StateFilter
                 activeFilter={activeFilter}
                 activeRegion={activeRegion}
                 handleFilter={handleFilter}
@@ -26,7 +27,7 @@ function MobileChooseState(props) {
                 selectRegion={selectRegion}
                 stateOptions={stateOptions}
                 toggleFilterOptions={toggleFilterOptions}
-            />
+            />*/}
         </div>
     );
 }
