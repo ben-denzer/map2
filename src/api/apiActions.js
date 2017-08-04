@@ -26,8 +26,7 @@ const getCommunitiesInState = region => (dispatch, getState) => {
             dispatch({ type: COMMUNITIES_SUCCESS, allCommunityData });
             dispatch({ type: SELECT_REGION, activeRegion: region });
         }).catch(error => {
-            console.log(error);
-            dispatch({ type: API_ERROR, error });
+            dispatch({ type: API_ERROR, error: error.toString });
         });
 
 };
@@ -66,7 +65,7 @@ const getRegions = () => (dispatch) => {
             // }
         }).catch(error => {
             console.log(error);
-            dispatch({ type: API_ERROR, error })
+            dispatch({ type: API_ERROR, error: error.toString() })
         });
 };
 
@@ -82,7 +81,10 @@ const getCoords = (address, radius, callback) => {
     fetch(`${apiUrl.domainUrl}api/v3/communities/ratings/geo/address/?format=json`, options)
         .then(res => res.json())
         .then(results => getCommunitiesByDistance(results, state, radius, callback))
-        .catch(err => callback(err));
+        .catch(err => {
+            console.log('err', err);
+            callback(err)
+        });
 }
 
 const getCommunitiesByDistance = (data, state, radius, cb) => {

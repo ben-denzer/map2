@@ -60,7 +60,6 @@ function Filterbar(props) {
             <div id="filterbar_right">
                 <img
                     id="reset_arrow"
-                    className={!activeRegion && "disabled"}
                     src={resetArrow}
                     alt="Reset Filters"
                     onClick={() => {

@@ -23,6 +23,7 @@ function SidebarFilter(props) {
         handleCityStateChange,
         handleMultiSelect,
         handleSliderChange,
+        radiusError,
         sidebarFilterVisibility,
         toggleMultiSelect,
     } = props;
@@ -119,7 +120,7 @@ function SidebarFilter(props) {
                 <RangeSlider
                     label="Search Radius (Miles)"
                     handleSliderChange={handleSliderChange}
-                    id="distanceFilter"
+                    id="distanceVal"
                     margin={0}
                     max={40}
                     min={10}
@@ -139,6 +140,8 @@ function SidebarFilter(props) {
                     onChange={(val) => handleDistanceChange(val)}
                 />
             </div>*/}
+
+            {radiusError && <div id="radius_error">{radiusError}</div>}
 
             <div id="distance_button_container">
                 <div id="distance_search_button" onClick={getByRadius}>
@@ -267,6 +270,7 @@ SidebarFilter.propTypes = {
     handleSliderChange: PropTypes.func.isRequired,
     locationText1: PropTypes.string.isRequired,
     locationText2: PropTypes.string.isRequired,
+    radiusError: PropTypes.string.isRequired,
     sidebarFilterVisibility: PropTypes.bool.isRequired,
     sidebarMultiSelectStatus: PropTypes.string.isRequired,
     toggleMultiSelect: PropTypes.func.isRequired,

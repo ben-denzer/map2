@@ -26,8 +26,6 @@ function CommunityPreview(props) {
         state,
     } = allCommunityData;
 
-    console.log(allCommunityData);
-
     return (
         <div
             className={`community-preview-container${highlightedCommunity === id ? " highlighted" : ""}`}

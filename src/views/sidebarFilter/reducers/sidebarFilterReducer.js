@@ -9,6 +9,7 @@ const initialState = {
     locationText2: "",
     priceFilter: [0, 0],
     radiusChanged: false,
+    radiusError: "",
     sidebarMultiSelectStatus: "",
 };
 
@@ -49,10 +50,15 @@ export default function sidebarFiterReducer(state = initialState, action) {
             state,
             { [action.filter]: [...state[action.filter], action.li] },
         );
+
+    case "RADIUS_ERROR":
+        return Object.assign({}, state, { radiusError: action.err });
+
     case "RESET_SIDEBAR_FILTERS":
         return initialState;
 
     case "SLIDER_CHANGE":
+        console.log(action.id, action.valArray);
         return Object.assign(
             {},
             state,

@@ -46,8 +46,10 @@ class HomePage extends Component {
             const hash = this.props.history.location.hash;
             if (hash) {
                 if (/state=/.test(hash)) {
-                    const stateInUrl = hash.slice(7, 9);
-                    this.props.selectState(stateInUrl);
+                    let stateInUrl = hash.slice(7, 9);
+                    if (stateInUrl.indexOf('&') === -1) {
+                        this.props.selectState(stateInUrl);
+                    }
                     this.props.selectRegion('all');
                 } else {
                     const regionIndex = hash.search(/region=/);
@@ -78,7 +80,7 @@ class HomePage extends Component {
     }
 
     render() {
-        const { activeRegion, activeState, history, sidebarFilterVisibility } = this.props;
+        const { /*activeRegion, activeState,*/ history, sidebarFilterVisibility } = this.props;
         if (this.props.mobile) {
             return (
                 <div id="mobile_container" className={!history.location.hash && 'first-page'}>
@@ -118,7 +120,7 @@ class HomePage extends Component {
 }
 
 HomePage.propTypes = {
-    activeRegion: PropTypes.string.isRequired,
+    // activeRegion: PropTypes.string.isRequired,
     mobile: PropTypes.bool.isRequired,
     history: PropTypes.object.isRequired,
     selectRegion: PropTypes.func.isRequired,
